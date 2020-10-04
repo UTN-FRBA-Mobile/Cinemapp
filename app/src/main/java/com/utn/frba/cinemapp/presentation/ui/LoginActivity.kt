@@ -7,7 +7,7 @@ import com.utn.frba.cinemapp.MainActivity
 import com.utn.frba.cinemapp.R
 import kotlinx.android.synthetic.main.activity_login.*
 
-class Login : AppCompatActivity() {
+class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

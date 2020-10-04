@@ -8,7 +8,7 @@
     android:weightSum="10"
     tools:context=".MainActivity"
     android:background="@drawable/bg">
-    
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -40,7 +40,7 @@
 
 <!--        fila 1 y columna 1-->
         <androidx.cardview.widget.CardView
-            android:id="@+id/optionFilms"
+            android:id="@+id/optionMovies"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"
