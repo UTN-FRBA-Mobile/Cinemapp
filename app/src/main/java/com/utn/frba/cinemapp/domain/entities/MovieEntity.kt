@@ -1,5 +1,7 @@
 package com.utn.frba.cinemapp.domain.entities
 
+import android.graphics.Bitmap
+
 data class MovieEntity(
 
     var id: Int = 0,
@@ -11,6 +13,7 @@ data class MovieEntity(
     var details: MovieDetailsEntity? = null,
     var title: String,
     var posterPath: String?,
+    var posterBitMap: Bitmap? = null,
     var originalLanguage: String,
     var originalTitle: String,
     var backdropPath: String?,
