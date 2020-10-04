@@ -25,7 +25,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="192dp" />
+        app:layout_constraintGuide_begin="180dp" />
 
     <ImageView
         android:id="@+id/movie_image"
@@ -43,8 +43,8 @@
         android:id="@+id/title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
         android:text="TextView"
         android:textSize="18sp"
         app:layout_constraintStart_toEndOf="@+id/movie_image"
@@ -55,8 +55,8 @@
         android:id="@+id/genre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="12dp"
         android:text="TextView"
         app:layout_constraintStart_toEndOf="@+id/movie_image"
         app:layout_constraintTop_toBottomOf="@+id/title"
@@ -67,8 +67,8 @@
         style="@style/stars"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="4dp"
         android:stepSize="0.1"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintStart_toEndOf="@+id/movie_image" />

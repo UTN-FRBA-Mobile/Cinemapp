@@ -10,7 +10,7 @@ import com.utn.frba.cinemapp.domain.entities.MovieEntity
 import kotlinx.android.synthetic.main.popular_movies_item.view.*
 
 class ListMoviesAdapter(
-    private var listMovies: ArrayList<MovieEntity>,
+    private var listMovies: List<MovieEntity>,
     private var context: Context
 ) : RecyclerView.Adapter<ListMoviesAdapter.ViewHolder>() {
 
@@ -39,7 +39,7 @@ class ListMoviesAdapter(
         fun bind(movie: MovieEntity) {
             vista.movie_image.setImageBitmap(movie.posterBitMap)
             vista.title.text = movie.title
-            vista.genre.text = movie.details?.genres?.joinToString(", ")
+            vista.genre.text = movie.details?.genres?.joinToString { it.name + ", " }
             vista.stars.rating = movie.popularity.toFloat()
 
 //            vista.elpIvPelicula.setOnClickListener {
