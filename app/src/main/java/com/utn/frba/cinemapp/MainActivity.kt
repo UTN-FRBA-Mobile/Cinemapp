@@ -3,6 +3,7 @@ package com.utn.frba.cinemapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.utn.frba.cinemapp.presentation.ui.Login
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -14,7 +15,7 @@ class MainActivity : AppCompatActivity() {
         setupButton();
     }
 
-    private fun setupButton(){
+    private fun setupButton() {
         //Configura botón de Login
         optionLogin.setOnClickListener {
             val loginIntent = Intent(this, Login::class.java).apply {
