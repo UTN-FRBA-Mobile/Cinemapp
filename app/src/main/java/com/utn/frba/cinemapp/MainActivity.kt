@@ -10,11 +10,20 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        //Si estoy registrado, obtengo el email
+        val bundle: Bundle? = intent.extras;
+        val mail = bundle?.getString("email");
         // Configura los eventos de los botones
-        setupButton();
+        setupButton(mail ?: "");
+//        setupButton();
     }
 
-    private fun setupButton(){
+    private fun setupButton(email: String){
+        //Si el email tiene datos, los muestro en el label
+        if(email.isNotEmpty()){
+//            mainTextUser.text = R.string.app_welcome + " " +  email;
+            mainTextUser.setText( getString(R.string.app_welcome ,  email)   )
+        }
         //Configura botón de Login
         optionLogin.setOnClickListener {
             val loginIntent = Intent(this, Login::class.java).apply {

@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">CinemApp</string>
 
+    <string name="app_welcome">Bienvenido %1$s</string>
+
     <string name="app_portada_film">Películas</string>
     <string name="app_portada_login">Login</string>
     <string name="app_portada_sign_up">Registrarse</string>
