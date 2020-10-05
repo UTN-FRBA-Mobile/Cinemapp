@@ -1,7 +1,6 @@
 package com.utn.frba.cinemapp.presentation.ui.popularMovies
 
 import android.graphics.Bitmap
-import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -26,8 +25,6 @@ class MoviesActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.popular_movies_activity)
 
-        popular_movies_recyclerview.layoutManager = LinearLayoutManager(this)
-
         moviesDataStore.getPopularMoviesAsync(
             onSuccess = { loadPopularMoviesSuccess(it) },
             onError = { genericServiceError(it) })
@@ -45,7 +42,6 @@ class MoviesActivity : AppCompatActivity() {
                 onError = { t -> genericServiceError(t) }
             )
         }
-//        popular_movies_recyclerview.adapter = ListMoviesAdapter(movies, this)
     }
 
     private fun loadImagesMoviesSuccess(movieId: Int, image: Bitmap?) {
@@ -53,6 +49,7 @@ class MoviesActivity : AppCompatActivity() {
         val movie = this.popularMovies.findLast { it.id == movieId }
         movie?.posterBitMap = image
 
+        popular_movies_recyclerview.layoutManager = LinearLayoutManager(this)
         popular_movies_recyclerview.adapter = ListMoviesAdapter(this.popularMovies, this)
     }
 

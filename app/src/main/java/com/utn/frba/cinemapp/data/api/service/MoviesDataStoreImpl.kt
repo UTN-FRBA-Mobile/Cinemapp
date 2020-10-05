@@ -1,5 +1,6 @@
 package com.utn.frba.cinemapp.data.api.service
 
+import android.util.Log
 import com.utn.frba.cinemapp.config.URL_PROXY_MOVIES
 import com.utn.frba.cinemapp.data.api.entity.MovieListResult
 import com.utn.frba.cinemapp.data.api.mappers.MovieDataEntityMapper
@@ -40,6 +41,7 @@ class MoviesDataStoreImpl : MoviesDataStore {
                 call: Call<MovieListResult>,
                 response: Response<MovieListResult>
             ) {
+                Log.v("RESPUESTA", response.body().toString())
                 val r = response.body() as MovieListResult
                 onSuccess(r.movies.map { movieDataMapper.mapFrom(it) })
             }
