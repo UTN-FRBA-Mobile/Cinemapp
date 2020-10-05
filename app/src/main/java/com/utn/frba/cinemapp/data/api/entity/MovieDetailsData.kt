@@ -2,7 +2,7 @@ package com.utn.frba.cinemapp.data.api.entity
 
 import com.google.gson.annotations.SerializedName
 
-data class DetailsData(
+data class MovieDetailsData(
 
     @SerializedName("adult")
     var adult: Boolean = false,

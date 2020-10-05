@@ -1,15 +1,15 @@
 package com.utn.frba.cinemapp.data.api.mappers
 
-import com.utn.frba.cinemapp.data.api.entity.DetailsData
+import com.utn.frba.cinemapp.data.api.entity.MovieDetailsData
 import com.utn.frba.cinemapp.domain.common.Mapper
 import com.utn.frba.cinemapp.domain.entities.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class DetailsDataMovieEntityMapper @Inject constructor() : Mapper<DetailsData, MovieEntity>() {
+class DetailsDataMovieEntityMapper @Inject constructor() : Mapper<MovieDetailsData, MovieEntity>() {
 
-    override fun mapFrom(from: DetailsData): MovieEntity {
+    override fun mapFrom(from: MovieDetailsData): MovieEntity {
         val movieEntity = MovieEntity(
             id = from.id,
             voteCount = from.voteCount,
