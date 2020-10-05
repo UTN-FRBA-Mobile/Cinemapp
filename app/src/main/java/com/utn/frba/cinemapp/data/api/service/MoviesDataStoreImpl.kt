@@ -1,9 +1,6 @@
 package com.utn.frba.cinemapp.data.api.service
 
-import android.content.res.Resources
-import android.graphics.BitmapFactory
-import com.utn.frba.cinemapp.R
-import com.utn.frba.cinemapp.config.URL_BACKEND
+import com.utn.frba.cinemapp.config.URL_PROXY_MOVIES
 import com.utn.frba.cinemapp.data.api.entity.MovieListResult
 import com.utn.frba.cinemapp.data.api.mappers.MovieDataEntityMapper
 import com.utn.frba.cinemapp.data.api.rest.ThemoviedbRestApi
@@ -22,7 +19,7 @@ class MoviesDataStoreImpl : MoviesDataStore {
     private val movieDataMapper = MovieDataEntityMapper()
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl(URL_BACKEND)
+        .baseUrl(URL_PROXY_MOVIES)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
     private val apiRest = retrofit.create<ThemoviedbRestApi>(ThemoviedbRestApi::class.java)
@@ -32,22 +29,21 @@ class MoviesDataStoreImpl : MoviesDataStore {
         onError: (t: Throwable) -> Unit
     ) {
 
-        onSuccess(mocksMovies())
+        apiRest.getPopularMovies().enqueue(object : Callback<MovieListResult> {
 
-//        apiRest.getPopularMovies().enqueue(object : Callback<MovieListResult> {
-//
-//            override fun onFailure(call: Call<MovieListResult>, t: Throwable) {
-//                onError(t)
-//            }
-//
-//            override fun onResponse(
-//                call: Call<MovieListResult>,
-//                response: Response<MovieListResult>
-//            ) {
-//                val r = response.body() as MovieListResult
-//                onSuccess(r.movies.map { movieDataMapper.mapFrom(it) })
-//            }
-//        })
+            override fun onFailure(call: Call<MovieListResult>, t: Throwable) {
+                onError(t)
+                onSuccess(mocksMovies())
+            }
+
+            override fun onResponse(
+                call: Call<MovieListResult>,
+                response: Response<MovieListResult>
+            ) {
+                val r = response.body() as MovieListResult
+                onSuccess(r.movies.map { movieDataMapper.mapFrom(it) })
+            }
+        })
     }
 
 
