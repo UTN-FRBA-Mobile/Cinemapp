@@ -1,6 +1,6 @@
 package com.utn.frba.cinemapp.presentation.ui.popularMovies
 
-import android.graphics.BitmapFactory
+import android.graphics.Bitmap
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
@@ -18,12 +18,12 @@ class MoviesActivity : AppCompatActivity() {
     private val moviesDataStore: MoviesDataStore = MoviesDataStoreImpl()
     private val imagesDataStore: ImagesDataStore = ImagesDataStoreImpl()
 
+    private lateinit var popularMovies: List<MovieEntity>
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.popular_movies_activity)
-
-        popular_movies_recyclerview.layoutManager = LinearLayoutManager(this)
 
         moviesDataStore.getPopularMoviesAsync(
             onSuccess = { loadPopularMoviesSuccess(it) },
@@ -31,12 +31,28 @@ class MoviesActivity : AppCompatActivity() {
     }
 
     private fun loadPopularMoviesSuccess(movies: List<MovieEntity>) {
-        Log.v("movies", movies.toString())
-        for (m in movies) {
-            m.posterBitMap = BitmapFactory.decodeResource(resources, R.drawable.film)
+
+        popularMovies = movies
+        Log.v("movies", popularMovies.toString())
+
+        popularMovies.forEach {
+            imagesDataStore.getImageAsync(
+                it.posterPath!!,
+                onSuccess = { r -> loadImagesMoviesSuccess(it.id, r) },
+                onError = { t -> genericServiceError(t) }
+            )
         }
-        popular_movies_recyclerview.adapter = ListMoviesAdapter(movies, this)
     }
+
+    private fun loadImagesMoviesSuccess(movieId: Int, image: Bitmap?) {
+
+        val movie = this.popularMovies.findLast { it.id == movieId }
+        movie?.posterBitMap = image
+
+        popular_movies_recyclerview.layoutManager = LinearLayoutManager(this)
+        popular_movies_recyclerview.adapter = ListMoviesAdapter(this.popularMovies, this)
+    }
+
 
     private fun genericServiceError(t: Throwable) {
         Log.v(t.localizedMessage, t.stackTrace.toString())

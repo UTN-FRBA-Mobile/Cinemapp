@@ -40,7 +40,8 @@ class ListMoviesAdapter(
             vista.movie_image.setImageBitmap(movie.posterBitMap)
             vista.title.text = movie.title
             vista.genre.text = movie.details?.genres?.joinToString { it.name + ", " }
-            vista.stars.rating = movie.popularity.toFloat()
+            vista.stars.rating = movie.voteAverage.toFloat() * 0.5f
+            vista.releaseDate.text = movie.releaseDate
 
 //            vista.elpIvPelicula.setOnClickListener {
 //                context.startActivity(
