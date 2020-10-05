@@ -4,5 +4,12 @@ import android.graphics.Bitmap
 
 interface ImagesDataStore {
 
-    fun getImage(imagePath: String): Bitmap?
+    /**
+     *
+     */
+    fun getImageAsync(
+        imagePath: String,
+        onSuccess: (Bitmap?) -> Unit,
+        onError: (t: Throwable) -> Unit
+    )
 }
