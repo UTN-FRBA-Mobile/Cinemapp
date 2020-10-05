@@ -1,9 +1,14 @@
 package com.utn.frba.cinemapp.data.api.service
 
+import android.content.res.Resources
+import android.graphics.BitmapFactory
+import com.utn.frba.cinemapp.R
 import com.utn.frba.cinemapp.config.URL_BACKEND
 import com.utn.frba.cinemapp.data.api.entity.MovieListResult
 import com.utn.frba.cinemapp.data.api.mappers.MovieDataEntityMapper
 import com.utn.frba.cinemapp.data.api.rest.ThemoviedbRestApi
+import com.utn.frba.cinemapp.domain.entities.GenreEntity
+import com.utn.frba.cinemapp.domain.entities.MovieDetailsEntity
 import com.utn.frba.cinemapp.domain.entities.MovieEntity
 import com.utn.frba.cinemapp.domain.servicies.MoviesDataStore
 import retrofit2.Call
@@ -22,28 +27,113 @@ class MoviesDataStoreImpl : MoviesDataStore {
         .build()
     private val apiRest = retrofit.create<ThemoviedbRestApi>(ThemoviedbRestApi::class.java)
 
-    override fun getPopularMovies(): List<MovieEntity> {
-        val call = apiRest.getPopularMovies().enqueue(object : Callback<MovieListResult> {
+    override fun getPopularMoviesAsync(
+        onSuccess: (List<MovieEntity>) -> Unit,
+        onError: (t: Throwable) -> Unit
+    ) {
 
-            override fun onResponse(
-                call: Call<MovieListResult>,
-                response: Response<MovieListResult>
-            ) {
-                print("EJECUTANDO")
-                if (response.isSuccessful) {
-//                    return response.body()?.movies?.map { movieDataMapper.mapFrom(it) }
-                    print(response.body())
-                }
-            }
+        onSuccess(mocksMovies())
 
-            override fun onFailure(call: Call<MovieListResult>, t: Throwable) {
-                print("SE ROMPIO TODO")
-                t.printStackTrace()
-            }
-        })
+//        apiRest.getPopularMovies().enqueue(object : Callback<MovieListResult> {
 //
-//        val movieListResult = call.body() as MovieListResult
-//        return movieListResult.movies.map { movieDataMapper.mapFrom(it) }
-        return ArrayList()
+//            override fun onFailure(call: Call<MovieListResult>, t: Throwable) {
+//                onError(t)
+//            }
+//
+//            override fun onResponse(
+//                call: Call<MovieListResult>,
+//                response: Response<MovieListResult>
+//            ) {
+//                val r = response.body() as MovieListResult
+//                onSuccess(r.movies.map { movieDataMapper.mapFrom(it) })
+//            }
+//        })
+    }
+
+
+    private fun mocksMovies(): List<MovieEntity> {
+
+        val genres = mutableListOf(GenreEntity(1, "Drama"), GenreEntity(1, "Suspenso"))
+
+        return listOf(
+            MovieEntity(
+                title = "asd",
+                posterPath = "asd",
+                originalLanguage = "asd",
+                originalTitle = "asd",
+                backdropPath = "asd",
+                releaseDate = "asd",
+                overview = "asd",
+                details = MovieDetailsEntity(
+                    genres = genres
+                ),
+                popularity = 3.3
+            ),
+            MovieEntity(
+                title = "qwe",
+                posterPath = "qwe",
+                originalLanguage = "qw",
+                originalTitle = "qwe",
+                backdropPath = "qwe",
+                releaseDate = "qwe",
+                overview = "qwe",
+                details = MovieDetailsEntity(
+                    genres = genres
+                ),
+                popularity = 4.5
+            ),
+            MovieEntity(
+                title = "asd",
+                posterPath = "asd",
+                originalLanguage = "asd",
+                originalTitle = "asd",
+                backdropPath = "asd",
+                releaseDate = "asd",
+                overview = "asd",
+                details = MovieDetailsEntity(
+                    genres = genres
+                ),
+                popularity = 4.1
+            ),
+            MovieEntity(
+                title = "qwe",
+                posterPath = "qwe",
+                originalLanguage = "qw",
+                originalTitle = "qwe",
+                backdropPath = "qwe",
+                releaseDate = "qwe",
+                overview = "qwe",
+                details = MovieDetailsEntity(
+                    genres = genres
+                ),
+                popularity = 4.5
+            ),
+            MovieEntity(
+                title = "asd",
+                posterPath = "asd",
+                originalLanguage = "asd",
+                originalTitle = "asd",
+                backdropPath = "asd",
+                releaseDate = "asd",
+                overview = "asd",
+                details = MovieDetailsEntity(
+                    genres = genres
+                ),
+                popularity = 2.7
+            ),
+            MovieEntity(
+                title = "qwe",
+                posterPath = "qwe",
+                originalLanguage = "qw",
+                originalTitle = "qwe",
+                backdropPath = "qwe",
+                releaseDate = "qwe",
+                overview = "qwe",
+                details = MovieDetailsEntity(
+                    genres = genres
+                ),
+                popularity = 1.8
+            )
+        ).sortedByDescending { it.popularity }
     }
 }
