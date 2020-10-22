@@ -28,7 +28,7 @@ class MoviesActivity : AppCompatActivity() {
 
     private fun loadPopularMoviesSuccess(movies: List<MovieEntity>) {
 
-        this.popularMovies = movies
+        this.popularMovies = movies.sortedByDescending { it.voteAverage }
         Log.i("movies", popularMovies.toString())
 
         popular_movies_recyclerview.layoutManager = LinearLayoutManager(this)
