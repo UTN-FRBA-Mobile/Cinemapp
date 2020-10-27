@@ -24,11 +24,19 @@ class MainActivity : AppCompatActivity() {
 //            mainTextUser.text = R.string.app_welcome + " " +  email;
             mainTextUser.setText( getString(R.string.app_welcome ,  email)   )
         }
+
         //Configura botón de Login
         optionLogin.setOnClickListener {
             val loginIntent = Intent(this, Login::class.java).apply {
             }
             startActivity(loginIntent);
+        }
+
+        //Configura botón de Registro
+        optionRegistration.setOnClickListener {
+            val registerIntent = Intent(this, Register::class.java).apply {
+            }
+            startActivity(registerIntent);
         }
     }
 }

@@ -8,6 +8,9 @@
     <color name="colorBlanco">#FAFBF9</color>
     <color name="colorAzulMarino">#2C384A</color>
     <color name="colorRojo">#d50000</color>
+    <color name="colorNegro">#171515</color>
+    <color name="colorVerdeAgua">#66F980</color>
+
 
 
 </resources>

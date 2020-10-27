@@ -139,6 +139,7 @@
 
 <!--        fila 2 columna 1-->
         <androidx.cardview.widget.CardView
+            android:id="@+id/optionRegistration"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
@@ -182,6 +183,7 @@
 
 <!--        fila 2 columna 2-->
         <androidx.cardview.widget.CardView
+            android:id="@+id/optionQr"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_columnWeight="1"
