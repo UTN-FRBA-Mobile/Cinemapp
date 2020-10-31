@@ -14,20 +14,21 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+import java.util.*
 
 class MoviesDataStoreImpl : MoviesDataStore {
 
     private val movieDataMapper = MovieDataEntityMapper()
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl(URL_PROXY_MOVIES)
-        .addConverterFactory(GsonConverterFactory.create())
-        .build()
+            .baseUrl(URL_PROXY_MOVIES)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
     private val apiRest = retrofit.create<ThemoviedbRestApi>(ThemoviedbRestApi::class.java)
 
     override fun getPopularMoviesAsync(
-        onSuccess: (List<MovieEntity>) -> Unit,
-        onError: (t: Throwable) -> Unit
+            onSuccess: (List<MovieEntity>) -> Unit,
+            onError: (t: Throwable) -> Unit
     ) {
 
         apiRest.getPopularMovies().enqueue(object : Callback<MovieListResult> {
@@ -38,8 +39,8 @@ class MoviesDataStoreImpl : MoviesDataStore {
             }
 
             override fun onResponse(
-                call: Call<MovieListResult>,
-                response: Response<MovieListResult>
+                    call: Call<MovieListResult>,
+                    response: Response<MovieListResult>
             ) {
                 Log.v("RESPUESTA", response.body().toString())
                 val r = response.body() as MovieListResult
@@ -54,84 +55,84 @@ class MoviesDataStoreImpl : MoviesDataStore {
         val genres = mutableListOf(GenreEntity(1, "Drama"), GenreEntity(1, "Suspenso"))
 
         return listOf(
-            MovieEntity(
-                title = "asd",
-                posterPath = "asd",
-                originalLanguage = "asd",
-                originalTitle = "asd",
-                backdropPath = "asd",
-                releaseDate = "asd",
-                overview = "asd",
-                details = MovieDetailsEntity(
-                    genres = genres
+                MovieEntity(
+                        title = "asd",
+                        posterPath = "asd",
+                        originalLanguage = "asd",
+                        originalTitle = "asd",
+                        backdropPath = "asd",
+                        releaseDate = Date(),
+                        overview = "asd",
+                        details = MovieDetailsEntity(
+                                genres = genres
+                        ),
+                        popularity = 3.3
                 ),
-                popularity = 3.3
-            ),
-            MovieEntity(
-                title = "qwe",
-                posterPath = "qwe",
-                originalLanguage = "qw",
-                originalTitle = "qwe",
-                backdropPath = "qwe",
-                releaseDate = "qwe",
-                overview = "qwe",
-                details = MovieDetailsEntity(
-                    genres = genres
+                MovieEntity(
+                        title = "qwe",
+                        posterPath = "qwe",
+                        originalLanguage = "qw",
+                        originalTitle = "qwe",
+                        backdropPath = "qwe",
+                        releaseDate = Date(),
+                        overview = "qwe",
+                        details = MovieDetailsEntity(
+                                genres = genres
+                        ),
+                        popularity = 4.5
                 ),
-                popularity = 4.5
-            ),
-            MovieEntity(
-                title = "asd",
-                posterPath = "asd",
-                originalLanguage = "asd",
-                originalTitle = "asd",
-                backdropPath = "asd",
-                releaseDate = "asd",
-                overview = "asd",
-                details = MovieDetailsEntity(
-                    genres = genres
+                MovieEntity(
+                        title = "asd",
+                        posterPath = "asd",
+                        originalLanguage = "asd",
+                        originalTitle = "asd",
+                        backdropPath = "asd",
+                        releaseDate = Date(),
+                        overview = "asd",
+                        details = MovieDetailsEntity(
+                                genres = genres
+                        ),
+                        popularity = 4.1
                 ),
-                popularity = 4.1
-            ),
-            MovieEntity(
-                title = "qwe",
-                posterPath = "qwe",
-                originalLanguage = "qw",
-                originalTitle = "qwe",
-                backdropPath = "qwe",
-                releaseDate = "qwe",
-                overview = "qwe",
-                details = MovieDetailsEntity(
-                    genres = genres
+                MovieEntity(
+                        title = "qwe",
+                        posterPath = "qwe",
+                        originalLanguage = "qw",
+                        originalTitle = "qwe",
+                        backdropPath = "qwe",
+                        releaseDate = Date(),
+                        overview = "qwe",
+                        details = MovieDetailsEntity(
+                                genres = genres
+                        ),
+                        popularity = 4.5
                 ),
-                popularity = 4.5
-            ),
-            MovieEntity(
-                title = "asd",
-                posterPath = "asd",
-                originalLanguage = "asd",
-                originalTitle = "asd",
-                backdropPath = "asd",
-                releaseDate = "asd",
-                overview = "asd",
-                details = MovieDetailsEntity(
-                    genres = genres
+                MovieEntity(
+                        title = "asd",
+                        posterPath = "asd",
+                        originalLanguage = "asd",
+                        originalTitle = "asd",
+                        backdropPath = "asd",
+                        releaseDate = Date(),
+                        overview = "asd",
+                        details = MovieDetailsEntity(
+                                genres = genres
+                        ),
+                        popularity = 2.7
                 ),
-                popularity = 2.7
-            ),
-            MovieEntity(
-                title = "qwe",
-                posterPath = "qwe",
-                originalLanguage = "qw",
-                originalTitle = "qwe",
-                backdropPath = "qwe",
-                releaseDate = "qwe",
-                overview = "qwe",
-                details = MovieDetailsEntity(
-                    genres = genres
-                ),
-                popularity = 1.8
-            )
+                MovieEntity(
+                        title = "qwe",
+                        posterPath = "qwe",
+                        originalLanguage = "qw",
+                        originalTitle = "qwe",
+                        backdropPath = "qwe",
+                        releaseDate = Date(),
+                        overview = "qwe",
+                        details = MovieDetailsEntity(
+                                genres = genres
+                        ),
+                        popularity = 1.8
+                )
         ).sortedByDescending { it.popularity }
     }
 }
