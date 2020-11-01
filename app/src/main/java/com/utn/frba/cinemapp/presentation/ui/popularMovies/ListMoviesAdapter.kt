@@ -14,7 +14,6 @@ import com.utn.frba.cinemapp.R
 import com.utn.frba.cinemapp.config.URL_PROXY_IMAGES
 import com.utn.frba.cinemapp.domain.entities.MovieEntity
 import com.utn.frba.cinemapp.presentation.ui.detailMovies.DetailMovieActivity
-import com.utn.frba.cinemapp.presentation.ui.detailMovies.ViewHolder
 import kotlinx.android.synthetic.main.popular_movies_item.view.*
 import java.text.SimpleDateFormat
 
@@ -64,7 +63,9 @@ class ViewHolder(
         Picasso.get().load(finalUrl).into(vista.movie_image)
 
         vista.popular_movies_constraint_layout.setOnClickListener {
+
             val detailIntent = Intent(context, DetailMovieActivity::class.java)
+            detailIntent.putExtra(DetailMovieActivity.KEY_MOVIE_SELECTED, movie)
             context.startActivity(detailIntent)
         }
     }

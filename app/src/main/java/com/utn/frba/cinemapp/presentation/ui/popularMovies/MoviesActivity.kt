@@ -8,7 +8,6 @@ import com.utn.frba.cinemapp.R
 import com.utn.frba.cinemapp.data.api.service.MoviesDataStoreImpl
 import com.utn.frba.cinemapp.domain.entities.MovieEntity
 import com.utn.frba.cinemapp.domain.servicies.MoviesDataStore
-import com.utn.frba.cinemapp.presentation.ui.detailMovies.ListMoviesAdapter
 import kotlinx.android.synthetic.main.popular_movies_activity.*
 
 class MoviesActivity : AppCompatActivity() {

@@ -10,8 +10,11 @@ import com.utn.frba.cinemapp.domain.servicies.MoviesDataStore
 
 class DetailMovieActivity : AppCompatActivity() {
 
-    private val moviesDataStore: MoviesDataStore = MoviesDataStoreImpl()
+    companion object {
+        const val KEY_MOVIE_SELECTED = "KEY_ID_SELECTED"
+    }
 
+    private val moviesDataStore: MoviesDataStore = MoviesDataStoreImpl()
     private lateinit var movie: MovieEntity
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -19,13 +22,15 @@ class DetailMovieActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_movie_detail)
 
+        this.movie = intent.getSerializableExtra(KEY_MOVIE_SELECTED) as MovieEntity
+        Log.i("movie selected", movie.toString())
+
 //        moviesDataStore.getPopularMoviesAsync(
 //            onSuccess = { loadPopularMoviesSuccess(it) },
 //            onError = { genericServiceError(it) })
     }
 
     private fun loadPopularMoviesSuccess(movies: List<MovieEntity>) {
-
 
 
 //        this.popularMovies = movies.sortedByDescending { it.voteAverage }
