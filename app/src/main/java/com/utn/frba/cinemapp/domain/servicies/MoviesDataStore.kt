@@ -11,4 +11,13 @@ interface MoviesDataStore {
         onSuccess: (List<MovieEntity>) -> Unit,
         onError: (t: Throwable) -> Unit
     )
+
+    /**
+     *
+     */
+    fun getDetailMovieAsync(
+        id: Int,
+        onSuccess: (MovieEntity) -> Unit,
+        onError: (t: Throwable) -> Unit
+    )
 }

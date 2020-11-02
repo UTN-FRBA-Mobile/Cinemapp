@@ -2,7 +2,9 @@ package com.utn.frba.cinemapp.data.api.service
 
 import android.util.Log
 import com.utn.frba.cinemapp.config.URL_PROXY_MOVIES
+import com.utn.frba.cinemapp.data.api.entity.MovieDetailsData
 import com.utn.frba.cinemapp.data.api.entity.MovieListResult
+import com.utn.frba.cinemapp.data.api.mappers.DetailsMovieDataEntityMapper
 import com.utn.frba.cinemapp.data.api.mappers.MovieDataEntityMapper
 import com.utn.frba.cinemapp.data.api.rest.ThemoviedbRestApi
 import com.utn.frba.cinemapp.domain.entities.GenreEntity
@@ -19,16 +21,17 @@ import java.util.*
 class MoviesDataStoreImpl : MoviesDataStore {
 
     private val movieDataMapper = MovieDataEntityMapper()
+    private val detailDataMapper = DetailsMovieDataEntityMapper()
 
     private val retrofit = Retrofit.Builder()
-            .baseUrl(URL_PROXY_MOVIES)
-            .addConverterFactory(GsonConverterFactory.create())
-            .build()
+        .baseUrl(URL_PROXY_MOVIES)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
     private val apiRest = retrofit.create<ThemoviedbRestApi>(ThemoviedbRestApi::class.java)
 
     override fun getPopularMoviesAsync(
-            onSuccess: (List<MovieEntity>) -> Unit,
-            onError: (t: Throwable) -> Unit
+        onSuccess: (List<MovieEntity>) -> Unit,
+        onError: (t: Throwable) -> Unit
     ) {
 
         apiRest.getPopularMovies().enqueue(object : Callback<MovieListResult> {
@@ -39,8 +42,8 @@ class MoviesDataStoreImpl : MoviesDataStore {
             }
 
             override fun onResponse(
-                    call: Call<MovieListResult>,
-                    response: Response<MovieListResult>
+                call: Call<MovieListResult>,
+                response: Response<MovieListResult>
             ) {
                 Log.v("RESPUESTA", response.body().toString())
                 val r = response.body() as MovieListResult
@@ -49,90 +52,111 @@ class MoviesDataStoreImpl : MoviesDataStore {
         })
     }
 
+    override fun getDetailMovieAsync(
+        id: Int,
+        onSuccess: (MovieEntity) -> Unit,
+        onError: (t: Throwable) -> Unit
+    ) {
+        apiRest.getDetailMovie(id).enqueue(object : Callback<MovieDetailsData> {
+
+            override fun onResponse(
+                call: Call<MovieDetailsData>,
+                response: Response<MovieDetailsData>
+            ) {
+                Log.v("RESPUESTA", response.body().toString())
+                val r = response.body() as MovieDetailsData
+                onSuccess(detailDataMapper.mapFrom(r))
+            }
+
+            override fun onFailure(call: Call<MovieDetailsData>, t: Throwable) {
+                onError(t)
+            }
+        })
+    }
 
     private fun mocksMovies(): List<MovieEntity> {
 
         val genres = mutableListOf(GenreEntity(1, "Drama"), GenreEntity(1, "Suspenso"))
 
         return listOf(
-                MovieEntity(
-                        title = "asd",
-                        posterPath = "asd",
-                        originalLanguage = "asd",
-                        originalTitle = "asd",
-                        backdropPath = "asd",
-                        releaseDate = Date(),
-                        overview = "asd",
-                        details = MovieDetailsEntity(
-                                genres = genres
-                        ),
-                        popularity = 3.3
+            MovieEntity(
+                title = "asd",
+                posterPath = "asd",
+                originalLanguage = "asd",
+                originalTitle = "asd",
+                backdropPath = "asd",
+                releaseDate = Date(),
+                overview = "asd",
+                details = MovieDetailsEntity(
+                    genres = genres
                 ),
-                MovieEntity(
-                        title = "qwe",
-                        posterPath = "qwe",
-                        originalLanguage = "qw",
-                        originalTitle = "qwe",
-                        backdropPath = "qwe",
-                        releaseDate = Date(),
-                        overview = "qwe",
-                        details = MovieDetailsEntity(
-                                genres = genres
-                        ),
-                        popularity = 4.5
+                popularity = 3.3
+            ),
+            MovieEntity(
+                title = "qwe",
+                posterPath = "qwe",
+                originalLanguage = "qw",
+                originalTitle = "qwe",
+                backdropPath = "qwe",
+                releaseDate = Date(),
+                overview = "qwe",
+                details = MovieDetailsEntity(
+                    genres = genres
                 ),
-                MovieEntity(
-                        title = "asd",
-                        posterPath = "asd",
-                        originalLanguage = "asd",
-                        originalTitle = "asd",
-                        backdropPath = "asd",
-                        releaseDate = Date(),
-                        overview = "asd",
-                        details = MovieDetailsEntity(
-                                genres = genres
-                        ),
-                        popularity = 4.1
+                popularity = 4.5
+            ),
+            MovieEntity(
+                title = "asd",
+                posterPath = "asd",
+                originalLanguage = "asd",
+                originalTitle = "asd",
+                backdropPath = "asd",
+                releaseDate = Date(),
+                overview = "asd",
+                details = MovieDetailsEntity(
+                    genres = genres
                 ),
-                MovieEntity(
-                        title = "qwe",
-                        posterPath = "qwe",
-                        originalLanguage = "qw",
-                        originalTitle = "qwe",
-                        backdropPath = "qwe",
-                        releaseDate = Date(),
-                        overview = "qwe",
-                        details = MovieDetailsEntity(
-                                genres = genres
-                        ),
-                        popularity = 4.5
+                popularity = 4.1
+            ),
+            MovieEntity(
+                title = "qwe",
+                posterPath = "qwe",
+                originalLanguage = "qw",
+                originalTitle = "qwe",
+                backdropPath = "qwe",
+                releaseDate = Date(),
+                overview = "qwe",
+                details = MovieDetailsEntity(
+                    genres = genres
                 ),
-                MovieEntity(
-                        title = "asd",
-                        posterPath = "asd",
-                        originalLanguage = "asd",
-                        originalTitle = "asd",
-                        backdropPath = "asd",
-                        releaseDate = Date(),
-                        overview = "asd",
-                        details = MovieDetailsEntity(
-                                genres = genres
-                        ),
-                        popularity = 2.7
+                popularity = 4.5
+            ),
+            MovieEntity(
+                title = "asd",
+                posterPath = "asd",
+                originalLanguage = "asd",
+                originalTitle = "asd",
+                backdropPath = "asd",
+                releaseDate = Date(),
+                overview = "asd",
+                details = MovieDetailsEntity(
+                    genres = genres
                 ),
-                MovieEntity(
-                        title = "qwe",
-                        posterPath = "qwe",
-                        originalLanguage = "qw",
-                        originalTitle = "qwe",
-                        backdropPath = "qwe",
-                        releaseDate = Date(),
-                        overview = "qwe",
-                        details = MovieDetailsEntity(
-                                genres = genres
-                        ),
-                        popularity = 1.8
-                )
+                popularity = 2.7
+            ),
+            MovieEntity(
+                title = "qwe",
+                posterPath = "qwe",
+                originalLanguage = "qw",
+                originalTitle = "qwe",
+                backdropPath = "qwe",
+                releaseDate = Date(),
+                overview = "qwe",
+                details = MovieDetailsEntity(
+                    genres = genres
+                ),
+                popularity = 1.8
+            )
         ).sortedByDescending { it.popularity }
     }
 }
