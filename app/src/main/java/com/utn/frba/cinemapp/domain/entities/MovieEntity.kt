@@ -1,7 +1,8 @@
 package com.utn.frba.cinemapp.domain.entities
 
-import android.graphics.Bitmap
+import java.io.Serializable
 import java.util.*
+
 
 data class MovieEntity(
 
@@ -14,10 +15,12 @@ data class MovieEntity(
     var details: MovieDetailsEntity? = null,
     var title: String,
     var posterPath: String?,
-    var posterBitMap: Bitmap? = null,
     var originalLanguage: String,
     var originalTitle: String,
     var backdropPath: String?,
     var releaseDate: Date,
-    var overview: String? = null
-)
+    var overview: String? = null,
+    var genre_ids: List<Int>? = null,
+    var genres: List<GenreEntity>? = null
+
+) : Serializable

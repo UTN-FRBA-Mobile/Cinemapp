@@ -1,5 +1,7 @@
 package com.utn.frba.cinemapp.domain.entities
 
+import java.io.Serializable
+
 data class MovieDetailsEntity(
     var belongsToCollection: Any? = null,
     var budget: Int? = null,
@@ -13,4 +15,4 @@ data class MovieDetailsEntity(
     var reviews: List<ReviewEntity>? = null,
     var videos: List<VideoEntity>? = null,
     var genres: List<GenreEntity>? = null
-)
+) : Serializable
