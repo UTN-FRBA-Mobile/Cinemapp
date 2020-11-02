@@ -8,4 +8,6 @@
 
     <string name="app_login_email_address">E-mail</string>
     <string name="app_login_password">Password</string>
+
+    <string name="app_scan_title">Escanea tu codigo QR</string>
 </resources>
