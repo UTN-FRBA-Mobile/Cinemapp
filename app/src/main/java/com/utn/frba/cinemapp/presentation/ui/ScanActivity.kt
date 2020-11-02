@@ -8,6 +8,7 @@ import android.util.Log
 import android.view.SurfaceHolder
 import android.view.SurfaceView
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.vision.CameraSource
@@ -15,12 +16,14 @@ import com.google.android.gms.vision.Detector
 import com.google.android.gms.vision.barcode.Barcode
 import com.google.android.gms.vision.barcode.BarcodeDetector
 import com.utn.frba.cinemapp.R
+import kotlinx.android.synthetic.main.activity_scan.*
 import java.io.IOException
 
 class ScanActivity : AppCompatActivity() {
 
     private var cameraSource: CameraSource? = null
     private var cameraView: SurfaceView? = null
+    private var qr_text: TextView? = null
     private val MY_PERMISSIONS_REQUEST_CAMERA = 1
     private var token = ""
     private var tokenanterior = ""
@@ -29,7 +32,7 @@ class ScanActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_scan)
         cameraView = findViewById(R.id.camera_view)
-
+        qr_text = findViewById(R.id.qr_text)
         initQR()
     }
 
@@ -91,6 +94,7 @@ class ScanActivity : AppCompatActivity() {
                 if (barcodes.size() > 0) {
                     val code = barcodes.valueAt(0).displayValue.toString()
                     Log.v("QR LOG ",code);
+                    qr_text!!.text = code;
 
                 }
             }
