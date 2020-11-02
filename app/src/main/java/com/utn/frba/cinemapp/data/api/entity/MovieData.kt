@@ -1,6 +1,7 @@
 package com.utn.frba.cinemapp.data.api.entity
 
 import com.google.gson.annotations.SerializedName
+import java.util.*
 
 data class MovieData(
 
@@ -35,8 +36,11 @@ data class MovieData(
     var backdropPath: String? = null,
 
     @SerializedName("release_date")
-    var releaseDate: String,
+    var releaseDate: Date,
 
     @SerializedName("overview")
-    var overview: String? = null
+    var overview: String? = null,
+
+    @SerializedName("genre_ids")
+    var genre_ids: List<Int>? = null
 )

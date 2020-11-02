@@ -22,7 +22,8 @@ class MovieDataEntityMapper @Inject constructor() : Mapper<MovieData, MovieEntit
             backdropPath = from.backdropPath,
             originalTitle = from.originalTitle,
             releaseDate = from.releaseDate,
-            overview = from.overview
+            overview = from.overview,
+            genre_ids = from.genre_ids
         )
     }
 }
