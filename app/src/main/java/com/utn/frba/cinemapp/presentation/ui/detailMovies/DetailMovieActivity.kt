@@ -40,9 +40,9 @@ class DetailMovieActivity : AppCompatActivity() {
         Log.i("SELECTED", movie.toString())
 
         // TODO: hacer que funcione la vista
-        val toolbar: Toolbar = findViewById<View>(R.id.appBarLayout) as Toolbar
-        toolbar.title = "This is toolbar."
-        setSupportActionBar(toolbar)
+//        val toolbar: Toolbar = findViewById<View>(R.id.appBarLayout) as Toolbar
+//        toolbar.title = "This is toolbar."
+//        setSupportActionBar(toolbar)
     }
 
     private fun genericServiceError(t: Throwable) {
