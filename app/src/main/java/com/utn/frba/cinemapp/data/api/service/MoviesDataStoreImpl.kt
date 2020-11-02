@@ -2,6 +2,7 @@ package com.utn.frba.cinemapp.data.api.service
 
 import android.util.Log
 import com.utn.frba.cinemapp.config.URL_PROXY_MOVIES
+import com.utn.frba.cinemapp.data.api.entity.GenresResult
 import com.utn.frba.cinemapp.data.api.entity.MovieDetailsData
 import com.utn.frba.cinemapp.data.api.entity.MovieListResult
 import com.utn.frba.cinemapp.data.api.mappers.DetailsMovieDataEntityMapper
@@ -74,6 +75,27 @@ class MoviesDataStoreImpl : MoviesDataStore {
         })
     }
 
+    override fun getGenresAsync(
+        onSuccess: (List<GenreEntity>) -> Unit,
+        onError: (t: Throwable) -> Unit
+    ) {
+        apiRest.getGenres().enqueue(object : Callback<GenresResult> {
+
+            override fun onResponse(
+                call: Call<GenresResult>,
+                response: Response<GenresResult>
+            ) {
+                Log.v("RESPUESTA", response.body().toString())
+                val r = response.body() as GenresResult
+                onSuccess(r.genres.map { GenreEntity(it.id, it.name) })
+            }
+
+            override fun onFailure(call: Call<GenresResult>, t: Throwable) {
+                onError(t)
+            }
+        })
+    }
+
     private fun mocksMovies(): List<MovieEntity> {
 
         val genres = mutableListOf(GenreEntity(1, "Drama"), GenreEntity(1, "Suspenso"))
@@ -104,58 +126,6 @@ class MoviesDataStoreImpl : MoviesDataStore {
                     genres = genres
                 ),
                 popularity = 4.5
-            ),
-            MovieEntity(
-                title = "asd",
-                posterPath = "asd",
-                originalLanguage = "asd",
-                originalTitle = "asd",
-                backdropPath = "asd",
-                releaseDate = Date(),
-                overview = "asd",
-                details = MovieDetailsEntity(
-                    genres = genres
-                ),
-                popularity = 4.1
-            ),
-            MovieEntity(
-                title = "qwe",
-                posterPath = "qwe",
-                originalLanguage = "qw",
-                originalTitle = "qwe",
-                backdropPath = "qwe",
-                releaseDate = Date(),
-                overview = "qwe",
-                details = MovieDetailsEntity(
-                    genres = genres
-                ),
-                popularity = 4.5
-            ),
-            MovieEntity(
-                title = "asd",
-                posterPath = "asd",
-                originalLanguage = "asd",
-                originalTitle = "asd",
-                backdropPath = "asd",
-                releaseDate = Date(),
-                overview = "asd",
-                details = MovieDetailsEntity(
-                    genres = genres
-                ),
-                popularity = 2.7
-            ),
-            MovieEntity(
-                title = "qwe",
-                posterPath = "qwe",
-                originalLanguage = "qw",
-                originalTitle = "qwe",
-                backdropPath = "qwe",
-                releaseDate = Date(),
-                overview = "qwe",
-                details = MovieDetailsEntity(
-                    genres = genres
-                ),
-                popularity = 1.8
             )
         ).sortedByDescending { it.popularity }
     }

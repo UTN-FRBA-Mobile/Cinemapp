@@ -1,5 +1,6 @@
 package com.utn.frba.cinemapp.domain.servicies
 
+import com.utn.frba.cinemapp.domain.entities.GenreEntity
 import com.utn.frba.cinemapp.domain.entities.MovieEntity
 
 interface MoviesDataStore {
@@ -18,6 +19,14 @@ interface MoviesDataStore {
     fun getDetailMovieAsync(
         id: Int,
         onSuccess: (MovieEntity) -> Unit,
+        onError: (t: Throwable) -> Unit
+    )
+
+    /**
+     *
+     */
+    fun getGenresAsync(
+        onSuccess: (List<GenreEntity>) -> Unit,
         onError: (t: Throwable) -> Unit
     )
 }

@@ -19,6 +19,8 @@ data class MovieEntity(
     var originalTitle: String,
     var backdropPath: String?,
     var releaseDate: Date,
-    var overview: String? = null
+    var overview: String? = null,
+    var genre_ids: List<Int>? = null,
+    var genres: List<GenreEntity>? = null
 
 ) : Serializable
