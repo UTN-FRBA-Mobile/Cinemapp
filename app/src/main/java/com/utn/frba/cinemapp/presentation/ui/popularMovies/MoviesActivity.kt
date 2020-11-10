@@ -2,6 +2,7 @@ package com.utn.frba.cinemapp.presentation.ui.popularMovies
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.utn.frba.cinemapp.R
@@ -50,6 +51,8 @@ class MoviesActivity : AppCompatActivity() {
         }
 
         Log.i("movies", popularMovies.toString())
+
+        popular_movies_progress.visibility = View.INVISIBLE
 
         popular_movies_recyclerview.layoutManager = LinearLayoutManager(this)
         popular_movies_recyclerview.adapter = ListMoviesAdapter(this.popularMovies, this)
