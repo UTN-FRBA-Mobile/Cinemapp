@@ -38,5 +38,21 @@ class MainActivity : AppCompatActivity() {
             }
             startActivity(registerIntent);
         }
+
+
+
+
+
+        //BORRAR ES UNA PRUEBA PARA LA UBICACION
+        titulo.setOnClickListener{
+            val pruebaLocationIntent = Intent(this, Select_cinema::class.java).apply {
+            }
+            startActivity(pruebaLocationIntent);
+        }
+
+
+
+
+
     }
 }

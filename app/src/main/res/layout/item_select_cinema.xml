@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/select_cinema_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Abasto"
+            android:textSize="30dp"
+            android:layout_margin="5dp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/select_cinema_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Cines Multiplex lleva adelante la operación de este complejo que es el único que permanece en la peatonal Lavalle donde supieron funcionar, en las épocas de gloria, más de 28 salas de cine."
+            android:layout_margin="5dp"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/select_cinema_adress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Lavalle 780, C1047 AAP, Buenos Aires"
+            android:textSize="20dp"
+            android:layout_margin="5dp"/>
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
