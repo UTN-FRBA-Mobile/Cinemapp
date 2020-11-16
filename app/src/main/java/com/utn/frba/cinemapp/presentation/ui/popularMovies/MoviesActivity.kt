@@ -11,7 +11,7 @@ import com.utn.frba.cinemapp.domain.entities.GenreEntity
 import com.utn.frba.cinemapp.domain.entities.MovieDetailsEntity
 import com.utn.frba.cinemapp.domain.entities.MovieEntity
 import com.utn.frba.cinemapp.domain.servicies.MoviesDataStore
-import kotlinx.android.synthetic.main.popular_movies_activity.*
+import kotlinx.android.synthetic.main.activity_popular_movies.*
 
 class MoviesActivity : AppCompatActivity() {
 
@@ -23,7 +23,7 @@ class MoviesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.popular_movies_activity)
+        setContentView(R.layout.activity_popular_movies)
 
         moviesDataStore.getGenresAsync(
             onSuccess = { loadGenresSuccess(it) },

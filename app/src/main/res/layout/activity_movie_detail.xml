@@ -15,16 +15,16 @@
         android:fitsSystemWindows="false">
 
         <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/appBarLayout"
+            android:id="@+id/app_bar_layout"
             android:layout_width="match_parent"
             android:layout_height="280dp"
             android:elevation="4dp">
 
             <com.google.android.material.appbar.CollapsingToolbarLayout
+                android:id="@+id/movie_detail_collapsing_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@color/colorBlanco"
-                app:contentScrim="@color/colorPrimary"
+                app:contentScrim="@color/colorRojo"
                 app:expandedTitleGravity="top|left"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
@@ -34,10 +34,11 @@
                     android:layout_height="match_parent"
                     android:scaleType="centerCrop" />
 
-                <com.google.android.material.appbar.MaterialToolbar
+                <androidx.appcompat.widget.Toolbar
                     android:id="@+id/movie_detail_toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="?attr/actionBarSize" />
+
             </com.google.android.material.appbar.CollapsingToolbarLayout>
         </com.google.android.material.appbar.AppBarLayout>
 
@@ -55,11 +56,11 @@
 
                 <include
                     android:id="@+id/detail_header"
-                    layout="@layout/layout_movie_detail_header" />
+                    layout="@layout/activity_movie_detail_header" />
 
                 <include
                     android:id="@+id/detail_body"
-                    layout="@layout/layout_movie_detail_body" />
+                    layout="@layout/activity_movie_detail_body" />
 
             </LinearLayout>
         </androidx.core.widget.NestedScrollView>

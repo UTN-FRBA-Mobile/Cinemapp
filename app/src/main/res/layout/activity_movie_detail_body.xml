@@ -30,7 +30,7 @@
             android:layout_marginTop="12dp"
             android:orientation="horizontal"
             android:visibility="gone"
-            tools:listitem="@layout/item_video"
+            tools:listitem="@layout/activity_movie_detail_body_item_video"
             tools:visibility="visible" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -77,6 +77,6 @@
             android:nestedScrollingEnabled="false"
             android:orientation="vertical"
             tools:ignore="UnusedAttribute"
-            tools:listitem="@layout/item_review" />
+            tools:listitem="@layout/activity_movie_detail_body_item_review" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
