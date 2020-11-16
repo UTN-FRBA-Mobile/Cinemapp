@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.squareup.picasso.Picasso
 import com.utn.frba.cinemapp.R
 import com.utn.frba.cinemapp.config.URL_PROXY_IMAGES
@@ -50,6 +51,7 @@ class DetailMovieActivity : AppCompatActivity() {
         renderDetailHeader()
         renderCollapsingLayout()
         renderSinopsis()
+        renderTrailers()
 
         movie_detail_main.visibility = View.VISIBLE
         movie_detail_progress.visibility = View.INVISIBLE
@@ -83,4 +85,11 @@ class DetailMovieActivity : AppCompatActivity() {
     private fun renderSinopsis() {
         detail_body.detail_body_overwiev_text.text = this.movie.details?.overview
     }
+
+    private fun renderTrailers() {
+        detail_body.detail_body_recyclerView_trailers.layoutManager = LinearLayoutManager(this)
+        detail_body.detail_body_recyclerView_trailers.adapter =
+            ListTrailersAdapter(this.movie.details?.videos!!)
+    }
+
 }

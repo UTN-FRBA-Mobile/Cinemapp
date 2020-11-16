@@ -23,7 +23,6 @@
                 android:id="@+id/movie_detail_collapsing_toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:contentScrim="@color/colorRojo"
                 app:expandedTitleGravity="top|left"
                 app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
