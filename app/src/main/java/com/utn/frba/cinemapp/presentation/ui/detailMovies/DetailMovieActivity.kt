@@ -13,6 +13,7 @@ import com.utn.frba.cinemapp.domain.entities.MovieEntity
 import com.utn.frba.cinemapp.domain.servicies.MoviesDataStore
 import kotlinx.android.synthetic.main.activity_movie_detail.*
 import kotlinx.android.synthetic.main.activity_movie_detail.view.*
+import kotlinx.android.synthetic.main.activity_movie_detail_body.view.*
 import kotlinx.android.synthetic.main.activity_movie_detail_header.view.*
 import java.text.SimpleDateFormat
 
@@ -44,9 +45,11 @@ class DetailMovieActivity : AppCompatActivity() {
     private fun loadDetailMovieSuccess(movie: MovieEntity) {
 
         this.movie = movie
+        Log.i("MOVIE", movie.toString())
 
         renderDetailHeader()
         renderCollapsingLayout()
+        renderSinopsis()
 
         movie_detail_main.visibility = View.VISIBLE
         movie_detail_progress.visibility = View.INVISIBLE
@@ -75,5 +78,9 @@ class DetailMovieActivity : AppCompatActivity() {
 
         val finalUrl = URL_PROXY_IMAGES + this.movie.backdropPath?.replace("/", "")
         Picasso.get().load(finalUrl).into(app_bar_layout.movie_detail_poster)
+    }
+
+    private fun renderSinopsis() {
+        detail_body.detail_body_overwiev_text.text = this.movie.details?.overview
     }
 }
