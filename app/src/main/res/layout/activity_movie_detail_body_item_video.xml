@@ -20,11 +20,11 @@
             android:scaleType="centerCrop" />
 
         <ImageView
-            android:layout_width="30dp"
-            android:layout_height="20dp"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
             android:layout_centerInParent="true"
             android:scaleType="fitXY"
-            android:src="@drawable/film" />
+            android:src="@drawable/ic_baseline_play_arrow_24" />
 
         <RelativeLayout
             android:layout_width="match_parent"
