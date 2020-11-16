@@ -16,18 +16,25 @@
         android:maxEms="12"
         android:singleLine="true"
         android:text="Star Wars: The Last Jedi"
-        android:textColor="@color/colorRojo"
         android:textSize="27sp"
         android:textStyle="bold" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/detail_header_release"
+        android:id="@+id/detail_header_release_date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:gravity="center"
-        android:text="Release Date :"
-        android:textColor="@color/colorRojo"
+        android:text="Release Date"
+        android:textSize="14sp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/detail_header_genre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:gravity="center"
+        android:text="genres"
         android:textSize="14sp" />
 
     <RatingBar

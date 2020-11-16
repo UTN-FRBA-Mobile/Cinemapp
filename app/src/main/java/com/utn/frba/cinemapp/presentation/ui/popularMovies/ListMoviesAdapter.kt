@@ -55,7 +55,7 @@ class ViewHolder(
         val sdf = SimpleDateFormat("dd/MM/yyyy")
 
         vista.title.text = movie.title
-        vista.genre.text = movie.genres?.joinToString { it.name }
+        vista.genre.text = movie.details?.genres?.joinToString { it.name }
         vista.stars.rating = movie.voteAverage.toFloat() * 0.5f
         vista.releaseDate.text = sdf.format(movie.releaseDate)
 
@@ -65,7 +65,7 @@ class ViewHolder(
         vista.popular_movies_constraint_layout.setOnClickListener {
 
             val detailIntent = Intent(context, DetailMovieActivity::class.java)
-            detailIntent.putExtra(DetailMovieActivity.KEY_MOVIE_SELECTED, movie)
+            detailIntent.putExtra(DetailMovieActivity.KEY_MOVIE_SELECTED_ID, movie.id)
             context.startActivity(detailIntent)
         }
     }
