@@ -10,7 +10,35 @@ import javax.inject.Singleton
 class DetailsMovieDataEntityMapper @Inject constructor() : Mapper<MovieDetailsData, MovieEntity>() {
 
     override fun mapFrom(from: MovieDetailsData): MovieEntity {
-        val movieEntity = MovieEntity(
+
+        val details = MovieDetailsEntity(
+            overview = from.overview,
+            budget = from.budget,
+            homepage = from.homepage,
+            imdbId = from.imdbId,
+            revenue = from.revenue,
+            runtime = from.runtime,
+            tagline = from.tagline,
+            genres = from.genres?.map { genreData ->
+                GenreEntity(id = genreData.id, name = genreData.name)
+            },
+            videos = from.videos?.results?.map { videoData ->
+                VideoEntity(
+                    id = videoData.id,
+                    name = videoData.name,
+                    youtubeKey = videoData.key
+                )
+            },
+            reviews = from.reviews?.results?.map { reviewData ->
+                ReviewEntity(
+                    id = reviewData.id,
+                    author = reviewData.author,
+                    content = reviewData.content
+                )
+            }
+        )
+
+        return MovieEntity(
             id = from.id,
             voteCount = from.voteCount,
             video = from.video,
@@ -23,53 +51,9 @@ class DetailsMovieDataEntityMapper @Inject constructor() : Mapper<MovieDetailsDa
             backdropPath = from.backdropPath,
             originalLanguage = from.originalLanguage,
             releaseDate = from.releaseDate,
-            overview = from.overview
+            overview = from.overview,
+            details = details
         )
-        val details = MovieDetailsEntity()
-        details.overview = from.overview
-        details.budget = from.budget
-        details.homepage = from.homepage
-        details.imdbId = from.imdbId
-        details.revenue = from.revenue
-        details.runtime = from.runtime
-        details.tagline = from.tagline
-
-        from.genres?.let {
-            val genreEntities = it.map { genreData ->
-                return@map GenreEntity(genreData.id, genreData.name)
-            }
-            details.genres = genreEntities
-        }
-
-        // Take only YouTube trailers
-        from.videos?.let {
-            val videosEntities = it.results?.filter { videoData ->
-                videoData.site.equals(VideoEntity.SOURCE_YOUTUBE) &&
-                        videoData.type.equals(VideoEntity.TYPE_TRAILER) //TODO: remove from here?
-            }?.map { videoData ->
-                return@map VideoEntity(
-                    id = videoData.id,
-                    name = videoData.name,
-                    youtubeKey = videoData.key
-                )
-
-            }
-            details.videos = videosEntities
-        }
-
-        from.reviews?.let {
-            val reviewEntities = it.results?.map { reviewData ->
-                return@map ReviewEntity(
-                    id = reviewData.id,
-                    author = reviewData.author,
-                    content = reviewData.content
-                )
-            }
-
-            details.reviews = reviewEntities
-        }
-        movieEntity.details = details
-        return movieEntity
     }
 
 }

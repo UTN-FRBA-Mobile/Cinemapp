@@ -23,7 +23,7 @@ class MovieDataEntityMapper @Inject constructor() : Mapper<MovieData, MovieEntit
             originalTitle = from.originalTitle,
             releaseDate = from.releaseDate,
             overview = from.overview,
-            genre_ids = from.genre_ids
+            genreIds = from.genreIds
         )
     }
 }

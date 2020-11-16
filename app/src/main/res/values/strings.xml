@@ -10,4 +10,11 @@
     <string name="app_login_password">Password</string>
 
     <string name="app_scan_title">Escanea tu codigo QR</string>
+    <string name="pelicula_detalle_sinopsis">Sinopsis</string>
+    <string name="pelicula_detalle_sin_sinopsis">Actualmente sin sinopsis</string>
+    <string name="pelicula_detalle_trailers">Trailers</string>
+    <string name="pelicula_detalle_sin_trailers">Actualmente sin trailers</string>
+    <string name="pelicula_detalle_comentarios">Comentarios</string>
+    <string name="pelicula_detalle_sin_comentarios">Actualmente sin comentarios</string>
+    <string name="pelicula_detalle_boton_comprar_entradas">Comprar Entradas</string>
 </resources>

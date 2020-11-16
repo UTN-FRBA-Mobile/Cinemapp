@@ -8,9 +8,10 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.utn.frba.cinemapp.R
 import com.utn.frba.cinemapp.data.api.service.MoviesDataStoreImpl
 import com.utn.frba.cinemapp.domain.entities.GenreEntity
+import com.utn.frba.cinemapp.domain.entities.MovieDetailsEntity
 import com.utn.frba.cinemapp.domain.entities.MovieEntity
 import com.utn.frba.cinemapp.domain.servicies.MoviesDataStore
-import kotlinx.android.synthetic.main.popular_movies_activity.*
+import kotlinx.android.synthetic.main.activity_popular_movies.*
 
 class MoviesActivity : AppCompatActivity() {
 
@@ -22,7 +23,7 @@ class MoviesActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.popular_movies_activity)
+        setContentView(R.layout.activity_popular_movies)
 
         moviesDataStore.getGenresAsync(
             onSuccess = { loadGenresSuccess(it) },
@@ -45,8 +46,10 @@ class MoviesActivity : AppCompatActivity() {
         this.popularMovies = movies.sortedByDescending { it.voteAverage }
 
         for (pm in this.popularMovies) {
-            pm.genres = genres
-                .filter { pm.genre_ids?.contains(it.id)!! }
+
+            pm.details = MovieDetailsEntity()
+            pm.details?.genres = genres
+                .filter { pm.genreIds?.contains(it.id)!! }
                 .map { GenreEntity(it.id, it.name) }
         }
 

@@ -14,42 +14,60 @@
         tools:context=".presentation.ui.LoginActivity">
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/detail_body_sinopsis"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="23dp"
+            android:text="@string/pelicula_detalle_sinopsis"
+            android:textColor="@color/colorRojo"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/detail_body_overwiev_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="23dp"
+            android:text="@string/pelicula_detalle_sin_sinopsis"
+            android:textColor="@android:color/darker_gray"
+            android:textStyle="italic"
+            android:visibility="invisible" />
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/detail_body_overwiev_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:textSize="14sp" />
+
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/detail_body_trailers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="23dp"
-            android:text="TRAILERS"
+            android:text="@string/pelicula_detalle_trailers"
             android:textColor="@color/colorRojo"
             android:textSize="20sp"
             android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/detail_body_trailers_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="23dp"
+            android:text="@string/pelicula_detalle_sin_trailers"
+            android:textColor="@android:color/darker_gray"
+            android:textStyle="italic"
+            android:visibility="invisible" />
+
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/detail_body_recyclerView_trailers"
             android:layout_width="match_parent"
-            android:layout_height="468dp"
-            android:layout_marginTop="12dp"
-            android:orientation="horizontal"
-            android:visibility="gone"
-            tools:listitem="@layout/item_video"
-            tools:visibility="visible" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="23dp"
-            android:text="texto"
-            android:textColor="@color/colorBlanco"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/detail_body_summary"
-            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="Summary"
-            android:textColor="@color/colorRojo"
-            android:textSize="14sp" />
+            android:orientation="horizontal" />
 
         <com.google.android.material.chip.ChipGroup
             android:id="@+id/detail_body_tags"
@@ -64,10 +82,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="23dp"
-            android:text="Comentarios"
+            android:text="@string/pelicula_detalle_comentarios"
             android:textColor="@color/colorRojo"
             android:textSize="20sp"
             android:textStyle="bold" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/detail_body_reviews_empty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="23dp"
+            android:text="@string/pelicula_detalle_sin_comentarios"
+            android:textColor="@android:color/darker_gray"
+            android:textStyle="italic"
+            android:visibility="invisible" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/detail_body_recyclerView_reviews"
@@ -75,8 +103,16 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:nestedScrollingEnabled="false"
-            android:orientation="vertical"
-            tools:ignore="UnusedAttribute"
-            tools:listitem="@layout/item_review" />
+            android:orientation="vertical" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            style="@style/AppTheme.Buttons"
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="20dp"
+            android:text="@string/pelicula_detalle_boton_comprar_entradas"
+            android:textSize="18sp" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

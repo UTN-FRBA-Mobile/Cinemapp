@@ -42,5 +42,5 @@ data class MovieData(
     var overview: String? = null,
 
     @SerializedName("genre_ids")
-    var genre_ids: List<Int>? = null
+    var genreIds: List<Int>? = null
 )
