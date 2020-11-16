@@ -89,7 +89,7 @@ class DetailMovieActivity : AppCompatActivity() {
     private fun renderTrailers() {
         detail_body.detail_body_recyclerView_trailers.layoutManager = LinearLayoutManager(this)
         detail_body.detail_body_recyclerView_trailers.adapter =
-            ListTrailersAdapter(this.movie.details?.videos!!)
+            ListTrailersAdapter(this.movie.details?.videos!!, this)
     }
 
 }
