@@ -50,8 +50,9 @@ class DetailMovieActivity : AppCompatActivity() {
 
         renderDetailHeader()
         renderCollapsingLayout()
-        renderSinopsis()
+        renderSynopsis()
         renderTrailers()
+        renderReviews()
 
         movie_detail_main.visibility = View.VISIBLE
         movie_detail_progress.visibility = View.INVISIBLE
@@ -82,14 +83,34 @@ class DetailMovieActivity : AppCompatActivity() {
         Picasso.get().load(finalUrl).into(app_bar_layout.movie_detail_poster)
     }
 
-    private fun renderSinopsis() {
+    private fun renderSynopsis() {
+        if (this.movie.details?.overview?.isEmpty()!!) {
+            detail_body.detail_body_overwiev_empty.visibility = View.VISIBLE
+            return
+        }
+
         detail_body.detail_body_overwiev_text.text = this.movie.details?.overview
     }
 
     private fun renderTrailers() {
+
+        if (this.movie.details?.videos?.isEmpty()!!) {
+            detail_body.detail_body_trailers_empty.visibility = View.VISIBLE
+            return
+        }
+
         detail_body.detail_body_recyclerView_trailers.layoutManager = LinearLayoutManager(this)
         detail_body.detail_body_recyclerView_trailers.adapter =
             ListTrailersAdapter(this.movie.details?.videos!!, this)
+    }
+
+    private fun renderReviews() {
+
+        if (this.movie.details?.reviews?.isEmpty()!!) {
+            detail_body.detail_body_reviews_empty.visibility = View.VISIBLE
+            return
+        }
+
     }
 
 }

@@ -15,28 +15,6 @@
         android:layout_weight="4"
         android:background="@drawable/cinemap_logo">
 
-        <!--        <ImageView-->
-        <!--            android:id="@+id/movie_image"-->
-        <!--            android:layout_width="99dp"-->
-        <!--            android:layout_height="155dp"-->
-        <!--            android:layout_centerInParent="true"-->
-        <!--            android:layout_marginStart="8dp"-->
-        <!--            android:layout_marginTop="8dp"-->
-        <!--            android:layout_marginBottom="8dp"-->
-        <!--            android:contentDescription="@null"-->
-        <!--            android:src="@drawable/cinema"-->
-        <!--            app:layout_constraintStart_toStartOf="parent" />-->
-
-        <!--        <TextView-->
-        <!--            android:id="@+id/titulo"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_centerInParent="true"-->
-        <!--            android:text="@string/app_name"-->
-        <!--            android:textColor="@color/colorTitulo"-->
-        <!--            android:textSize="45sp"-->
-        <!--            android:textStyle="bold" />-->
-
     </RelativeLayout>
 
     <GridLayout
