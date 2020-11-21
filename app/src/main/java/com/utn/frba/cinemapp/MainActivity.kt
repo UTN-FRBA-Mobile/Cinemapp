@@ -3,7 +3,9 @@ package com.utn.frba.cinemapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.utn.frba.cinemapp.presentation.ui.LoginActivity
+import com.utn.frba.cinemapp.presentation.ui.ScanActivity
 import com.utn.frba.cinemapp.presentation.ui.popularMovies.MoviesActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -41,6 +43,7 @@ class MainActivity : AppCompatActivity() {
             startActivity(moviesIntent)
         }
 
+<<<<<<< HEAD
         //Configura botón de Registro
         optionRegistration.setOnClickListener {
             val registerIntent = Intent(this, Register::class.java).apply {
@@ -59,5 +62,11 @@ class MainActivity : AppCompatActivity() {
 
 
 
+=======
+        optionScan.setOnClickListener {
+            val scanIntent = Intent(this, ScanActivity::class.java)
+            startActivity(scanIntent)
+        }
+>>>>>>> a14cd23ff55a833bc1c58f08f73c7d4d9600bdb7
     }
 }
