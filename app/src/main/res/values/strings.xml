@@ -16,6 +16,7 @@
     <string name="register_name">Nombre</string>
     <string name="register_last_name">Apellido</string>
     <string name="register_cancel">Cancelar</string>
+    <string name="aceptar">Aceptar</string>
 
 
     <!--
@@ -24,4 +25,14 @@
     -->
     <string name="hello_world">Hello Square World!</string>
     <string name="title_activity_register">Register</string>
+
+    <string-array name="spinnerSelectSeat">
+        <item>15:00:00</item>
+        <item>18:00:00</item>
+        <item>21:00:00</item>
+    </string-array>
+
+    <string name="selectSeat_select_time">Seleccione el horario: </string>
+    <string name="selectSeat_screen">PANTALLA </string>
+
 </resources>

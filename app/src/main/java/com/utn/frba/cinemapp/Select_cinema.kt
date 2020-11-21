@@ -36,6 +36,7 @@ class Select_cinema : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select_cinema)
+
         /***********************************************/
         //inicializo el fused
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
@@ -64,19 +65,12 @@ class Select_cinema : AppCompatActivity() {
                         initRecycleViewSelectCinema(cines)
 
                     }
-
-
-
-
-
                     //Log.d("Debug", " Sarasa " + Gson().toJson(cines))
 
                 }
                 catch (e: Exception){
                     //Log.i("sarasa", e.ge())
                 }
-
-
 
             }
 

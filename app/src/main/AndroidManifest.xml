@@ -14,7 +14,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Select_seat_time"></activity>
+        <activity android:name=".Pago"></activity>
+        <activity android:name=".Select_seat_time" />
         <activity android:name=".Select_cinema" />
         <activity
             android:name=".Register"
