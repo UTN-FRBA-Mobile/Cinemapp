@@ -11,6 +11,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.google.gson.Gson
 import com.utn.frba.cinemapp.interfaces.CinesApi
+import com.utn.frba.cinemapp.models.cine
 import com.utn.frba.cinemapp.models.compra
 import com.utn.frba.cinemapp.models.seat
 import kotlinx.android.synthetic.main.activity_main.*
@@ -27,6 +28,9 @@ class Select_seat_time : AppCompatActivity() {
     lateinit var retrofit: Retrofit
     lateinit var servicioApi: CinesApi
     lateinit var compraTicket: compra
+    lateinit var horario: String
+    var seats: MutableList<String> = mutableListOf()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,8 +40,13 @@ class Select_seat_time : AppCompatActivity() {
 
 
         continueSelectSeatButton.setOnClickListener {
+
+
+            var compraTicketconAsientos: compra = compra(compraTicket.idCine,horario,seats)
+
             val PagoIntent = Intent(this, Pago::class.java).apply {
             }
+            PagoIntent.putExtra("compra",compraTicketconAsientos)
             startActivity(PagoIntent);
         }
 
@@ -71,14 +80,14 @@ class Select_seat_time : AppCompatActivity() {
         val filas: Int
         val columnas: Int
 
-        if(!asientos.isNullOrEmpty()){
-            filas = (asientos.size / 2).toInt() - 10 //19 //3
-            columnas = (asientos.size / 2).toInt()  -10 // 19//3
-        }
-        else{
-            filas = 3
-            columnas = 3
-        }
+//        if(!asientos.isNullOrEmpty()){
+//            filas = (asientos.size / 2).toInt() - 10 //19 //3
+//            columnas = (asientos.size / 2).toInt()  -10 // 19//3
+//        }
+//        else{
+            filas = 4
+            columnas = 4
+//        }
 
         for (i in 1..filas) {
             var lienarNuevo: LinearLayout = LinearLayout(this)
@@ -111,11 +120,15 @@ class Select_seat_time : AppCompatActivity() {
                     if ( it.getTag() == LIBRE ){
                         it.setBackgroundResource(R.drawable.button_acept)
                         it.setTag(RESERVADO)
+                        seats.add(it.id.toString())
                     }
                     else{
                         it.setBackgroundResource(R.drawable.button_transparent)
                         it.setTag(LIBRE)
+                        seats.remove(it.id.toString())
                     }
+
+                    println(seats)
 
                 }
 
@@ -136,6 +149,7 @@ class Select_seat_time : AppCompatActivity() {
             }
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+                horario = parent?.getItemAtPosition(position).toString()
                 servicioApi.getSeatFromTime(compraTicket.idCine, parent?.getItemAtPosition(position).toString()).enqueue(object : Callback<List<seat>> {
 
                     override fun onFailure(call: Call<List<seat>>, t: Throwable) {
@@ -146,6 +160,7 @@ class Select_seat_time : AppCompatActivity() {
                         try{
                             val asientos = response?.body()
                             setScreen(asientos)
+                            seats.clear()
                             Log.d("Debug", " Sarasa " + Gson().toJson(asientos))
                         }
                         catch (e: Exception){
@@ -157,5 +172,7 @@ class Select_seat_time : AppCompatActivity() {
             }
         }
     }
+
+
 }
 
