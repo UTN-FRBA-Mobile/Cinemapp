@@ -12,7 +12,6 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-<<<<<<< HEAD
         android:layout_weight="3">
 
         <TextView
@@ -36,10 +35,6 @@
             android:layout_height="wrap_content">
 
         </TextView>
-=======
-        android:layout_weight="4"
-        android:background="@drawable/cinemap_logo">
->>>>>>> a14cd23ff55a833bc1c58f08f73c7d4d9600bdb7
 
     </RelativeLayout>
 
@@ -188,11 +183,7 @@
 
         <!--        fila 2 columna 2-->
         <androidx.cardview.widget.CardView
-<<<<<<< HEAD
             android:id="@+id/optionQr"
-=======
-            android:id="@+id/optionScan"
->>>>>>> a14cd23ff55a833bc1c58f08f73c7d4d9600bdb7
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_rowWeight="1"

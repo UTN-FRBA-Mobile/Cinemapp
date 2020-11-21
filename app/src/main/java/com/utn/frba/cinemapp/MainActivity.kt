@@ -43,7 +43,6 @@ class MainActivity : AppCompatActivity() {
             startActivity(moviesIntent)
         }
 
-<<<<<<< HEAD
         //Configura botón de Registro
         optionRegistration.setOnClickListener {
             val registerIntent = Intent(this, Register::class.java).apply {
@@ -58,15 +57,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(pruebaLocationIntent);
         }
 
-
-
-
-
-=======
-        optionScan.setOnClickListener {
+        optionQr.setOnClickListener {
             val scanIntent = Intent(this, ScanActivity::class.java)
             startActivity(scanIntent)
         }
->>>>>>> a14cd23ff55a833bc1c58f08f73c7d4d9600bdb7
+
     }
 }

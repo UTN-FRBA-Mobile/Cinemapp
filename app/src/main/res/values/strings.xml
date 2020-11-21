@@ -11,8 +11,6 @@
     <string name="app_login_email_address">E-mail</string>
     <string name="app_login_password">Password</string>
 
-<<<<<<< HEAD
-
     <string name="register_sub_title">Registrar un nuevo usuario</string>
     <string name="register_name">Nombre</string>
     <string name="register_last_name">Apellido</string>
@@ -36,7 +34,7 @@
     <string name="selectSeat_select_time">Seleccione el horario: </string>
     <string name="selectSeat_screen">PANTALLA </string>
 
-=======
+
     <string name="app_scan_title">Escanea tu codigo QR</string>
     <string name="pelicula_detalle_sinopsis">Sinopsis</string>
     <string name="pelicula_detalle_sin_sinopsis">Actualmente sin sinopsis</string>
@@ -45,5 +43,5 @@
     <string name="pelicula_detalle_comentarios">Comentarios</string>
     <string name="pelicula_detalle_sin_comentarios">Actualmente sin comentarios</string>
     <string name="pelicula_detalle_boton_comprar_entradas">Comprar Entradas</string>
->>>>>>> a14cd23ff55a833bc1c58f08f73c7d4d9600bdb7
+
 </resources>

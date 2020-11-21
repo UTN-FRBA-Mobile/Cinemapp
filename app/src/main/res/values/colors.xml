@@ -7,16 +7,12 @@
     <color name="colorLetraIcono">#070C00</color>
     <color name="colorBlanco">#FAFBF9</color>
     <color name="colorAzulMarino">#2C384A</color>
-<<<<<<< HEAD
     <color name="colorRojo">#d50000</color>
     <color name="colorNegro">#171515</color>
     <color name="colorVerdeAgua">#66F980</color>
-
-=======
-    <color name="colorRojo">#F84F4F</color>
     <color name="stars">#FFF84F4F</color>
     <color name="bg">#c5e5ee</color>
->>>>>>> a14cd23ff55a833bc1c58f08f73c7d4d9600bdb7
+
 
 
 </resources>
