@@ -1,5 +1,6 @@
 package com.utn.frba.cinemapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.Gravity
@@ -12,6 +13,7 @@ import com.google.gson.Gson
 import com.utn.frba.cinemapp.interfaces.CinesApi
 import com.utn.frba.cinemapp.models.compra
 import com.utn.frba.cinemapp.models.seat
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_select_seat_time.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -29,6 +31,16 @@ class Select_seat_time : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select_seat_time)
+
+
+
+
+        continueSelectSeatButton.setOnClickListener {
+            val PagoIntent = Intent(this, Pago::class.java).apply {
+            }
+            startActivity(PagoIntent);
+        }
+
 
         //Obtengo los datos que vengo arrastrando con la compra
         val bundle: Bundle? = intent.extras;
