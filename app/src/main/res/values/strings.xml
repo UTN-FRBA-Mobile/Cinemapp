@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">CinemApp</string>
 
+    <string name="app_welcome">Bienvenido %1$s</string>
+
     <string name="app_portada_film">Películas</string>
     <string name="app_portada_login">Login</string>
     <string name="app_portada_sign_up">Registrarse</string>
@@ -8,4 +10,29 @@
 
     <string name="app_login_email_address">E-mail</string>
     <string name="app_login_password">Password</string>
+
+
+    <string name="register_sub_title">Registrar un nuevo usuario</string>
+    <string name="register_name">Nombre</string>
+    <string name="register_last_name">Apellido</string>
+    <string name="register_cancel">Cancelar</string>
+    <string name="aceptar">Aceptar</string>
+
+
+    <!--
+    This string is used for square devices and overridden by hello_world in
+    values-round/strings.xml for round devices.
+    -->
+    <string name="hello_world">Hello Square World!</string>
+    <string name="title_activity_register">Register</string>
+
+    <string-array name="spinnerSelectSeat">
+        <item>15:00:00</item>
+        <item>18:00:00</item>
+        <item>21:00:00</item>
+    </string-array>
+
+    <string name="selectSeat_select_time">Seleccione el horario: </string>
+    <string name="selectSeat_screen">PANTALLA </string>
+
 </resources>

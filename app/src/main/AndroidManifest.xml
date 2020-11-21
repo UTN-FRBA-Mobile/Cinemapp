@@ -3,16 +3,31 @@
     package="com.utn.frba.cinemapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/entretenimiento"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:roundIcon="@drawable/entretenimiento"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
+
+
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+
         <activity android:name=".presentation.ui.LoginActivity" />
         <activity android:name=".presentation.ui.popularMovies.MoviesActivity" />
+
+        <activity android:name=".Pago"></activity>
+        <activity android:name=".Select_seat_time" />
+        <activity android:name=".Select_cinema" />
+        <activity
+            android:name=".Register"
+            android:label="@string/title_activity_register" />
+        <activity android:name=".Login" />
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
