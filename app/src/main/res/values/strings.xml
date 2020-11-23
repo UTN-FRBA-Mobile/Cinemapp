@@ -5,6 +5,8 @@
     <string name="app_portada_login">Login</string>
     <string name="app_portada_sign_up">Registrarse</string>
     <string name="app_portada_qr_code">Código QR</string>
+    <string name="app_portada_home">Inicio</string>
+
 
     <string name="app_login_email_address">E-mail</string>
     <string name="app_login_password">Password</string>

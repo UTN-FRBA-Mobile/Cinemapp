@@ -16,6 +16,7 @@
         <activity android:name=".presentation.ui.popularMovies.MoviesActivity" />
         <activity android:name=".presentation.ui.detailMovies.DetailMovieActivity" />
         <activity android:name=".presentation.ui.ScanActivity" />
+        <activity android:name=".presentation.ui.ScanReadyActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
