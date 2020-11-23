@@ -1,12 +1,29 @@
 <resources>
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="stars" parent="android:style/Widget.Material.RatingBar.Indicator" />
+    <style name="stars" parent="android:style/Widget.Material.RatingBar.Indicator">
+        <item name="android:progressBackgroundTint">@color/stars</item>
+        <item name="android:progressTint">@color/stars</item>
+        <item name="android:secondaryProgressTint">@color/stars</item>
+    </style>
+
+    <style name="starsDetail" parent="android:style/Widget.Material.RatingBar.Indicator">
+        <item name="android:progressBackgroundTint">@color/stars</item>
+        <item name="android:progressTint">@color/stars</item>
+        <item name="android:secondaryProgressTint">@color/stars</item>
+        <item name="android:scaleX">0.6</item>
+        <item name="android:scaleY">0.6</item>
+    </style>
+
+    <style name="AppTheme.Buttons" parent="Widget.AppCompat.Button.Colored">
+        <item name="android:background">@drawable/rounded_shape</item>
+        <item name="android:textColor">@color/colorRojo</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 
 </resources>
