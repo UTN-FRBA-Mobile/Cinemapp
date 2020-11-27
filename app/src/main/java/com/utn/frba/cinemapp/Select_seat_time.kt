@@ -14,6 +14,7 @@ import com.utn.frba.cinemapp.interfaces.CinesApi
 import com.utn.frba.cinemapp.models.cine
 import com.utn.frba.cinemapp.models.compra
 import com.utn.frba.cinemapp.models.seat
+import com.utn.frba.cinemapp.presentation.ui.LoginActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_select_seat_time.*
 import retrofit2.Call
@@ -31,25 +32,11 @@ class Select_seat_time : AppCompatActivity() {
     lateinit var horario: String
     var seats: MutableList<String> = mutableListOf()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select_seat_time)
 
-
-
-
-        continueSelectSeatButton.setOnClickListener {
-
-
-            var compraTicketconAsientos: compra = compra(compraTicket.idCine,horario,seats)
-
-            val PagoIntent = Intent(this, Pago::class.java).apply {
-            }
-            PagoIntent.putExtra("compra",compraTicketconAsientos)
-            startActivity(PagoIntent);
-        }
-
+        configurarBotones()
 
         //Obtengo los datos que vengo arrastrando con la compra
         val bundle: Bundle? = intent.extras;
@@ -71,6 +58,27 @@ class Select_seat_time : AppCompatActivity() {
         // Obtengo del backend la estructura del cine seleccionado
         // Ahora armo el layout
         //setScreen();
+    }
+
+    private fun configurarBotones(){
+        var compraTicketconAsientos: compra
+        var PagoIntent: Intent
+
+        continueSelectSeatButton.setOnClickListener {
+            if(compraTicket.idUsuario.isNullOrEmpty()){
+                compraTicketconAsientos = compra(compraTicket.idCine,horario,seats)
+                PagoIntent = Intent(this, LoginActivity::class.java).apply { }
+            }
+            else{
+                // TODO agregar el nombre id de usuario
+                compraTicketconAsientos = compra(compraTicket.idCine,horario,seats)
+                PagoIntent = Intent(this, Pago::class.java).apply { }
+            }
+//            val PagoIntent = Intent(this, Pago::class.java).apply {
+//            }
+            PagoIntent.putExtra("compra",compraTicketconAsientos)
+            startActivity(PagoIntent);
+        }
     }
 
     // TODO: debería recibir un objeto con el estado y la estructura del cine

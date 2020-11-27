@@ -1,11 +1,10 @@
 package com.utn.frba.cinemapp.interfaces
 
 import com.utn.frba.cinemapp.models.cine
+import com.utn.frba.cinemapp.models.login
 import com.utn.frba.cinemapp.models.seat
 import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface CinesApi {
 //    @GET("api/v1/cinemas/closest/{latitude}&{longitude}")
@@ -19,5 +18,14 @@ interface CinesApi {
     fun getSeatFromTime(
         @Path("idCine") idCine: String,
         @Path("time") time: String ) : Call<List<seat>>
+
+    @POST("api/v1/users/login")
+    fun Loguearse(@Body usuario: login
+
+//        @Field("user") usuario: String,
+//        @Field("password") password: String
+
+    ) : Call<login>
+
 
 }

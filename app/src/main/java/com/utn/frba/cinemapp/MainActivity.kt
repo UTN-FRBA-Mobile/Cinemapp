@@ -4,12 +4,15 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import com.utn.frba.cinemapp.models.compra
 import com.utn.frba.cinemapp.presentation.ui.LoginActivity
 import com.utn.frba.cinemapp.presentation.ui.ScanActivity
 import com.utn.frba.cinemapp.presentation.ui.popularMovies.MoviesActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
+    lateinit var compraTicket: compra
+    lateinit var mail: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -18,11 +21,23 @@ class MainActivity : AppCompatActivity() {
 
         //Si estoy registrado, obtengo el email
         val bundle: Bundle? = intent.extras;
-        val mail = bundle?.getString("email");
+
+        if(bundle != null){
+            compraTicket = bundle.getSerializable("compra") as compra
+            mail = compraTicket.email
+        }
+        else{
+            mail = ""
+        }
         // Configura los eventos de los botones
-        setupButton(mail ?: "");
+        setupButton(mail?: "");
 //        setupButton();
     }
+
+    override fun onBackPressed() {
+        finishAffinity();
+    }
+
 
     private fun setupButton(email: String){
         //Si el email tiene datos, los muestro en el label
@@ -51,11 +66,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         //BORRAR ES UNA PRUEBA PARA LA UBICACION
-        titulo.setOnClickListener{
-            val pruebaLocationIntent = Intent(this, Select_cinema::class.java).apply {
-            }
-            startActivity(pruebaLocationIntent);
-        }
+//        titulo.setOnClickListener{
+//            val pruebaLocationIntent = Intent(this, Select_cinema::class.java).apply {
+//            }
+//            startActivity(pruebaLocationIntent);
+//        }
 
         optionQr.setOnClickListener {
             val scanIntent = Intent(this, ScanActivity::class.java)
