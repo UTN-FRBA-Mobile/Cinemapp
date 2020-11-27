@@ -36,11 +36,11 @@ class LoginActivity : AppCompatActivity() {
     }
 
     override fun onBackPressed() {
-        mostrarAlerta("Debe apretal el botón de cancelar")
+        mostrarAlerta("Debe apretar el botón de Cancelar")
     }
 
     private fun configButtons() {
-
+        //Botón de cancelar
         loginCancelButton.setOnClickListener {
             val homeIntent = Intent(this, MainActivity::class.java)
             startActivity(homeIntent)

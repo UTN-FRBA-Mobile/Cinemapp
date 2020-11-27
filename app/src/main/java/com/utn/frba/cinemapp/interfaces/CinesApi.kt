@@ -2,6 +2,7 @@ package com.utn.frba.cinemapp.interfaces
 
 import com.utn.frba.cinemapp.models.cine
 import com.utn.frba.cinemapp.models.login
+import com.utn.frba.cinemapp.models.register
 import com.utn.frba.cinemapp.models.seat
 import retrofit2.Call
 import retrofit2.http.*
@@ -20,12 +21,9 @@ interface CinesApi {
         @Path("time") time: String ) : Call<List<seat>>
 
     @POST("api/v1/users/login")
-    fun Loguearse(@Body usuario: login
+    fun Loguearse(@Body usuario: login) : Call<login>
 
-//        @Field("user") usuario: String,
-//        @Field("password") password: String
-
-    ) : Call<login>
-
+    @POST("api/v1/users")
+    fun Registrarse(@Body usuario: register) : Call<register>
 
 }
