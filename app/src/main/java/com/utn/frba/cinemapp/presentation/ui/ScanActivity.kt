@@ -1,13 +1,14 @@
 package com.utn.frba.cinemapp.presentation.ui
 
 import android.Manifest
+import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
 import android.view.SurfaceHolder
 import android.view.SurfaceView
-import android.view.View
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
@@ -16,7 +17,6 @@ import com.google.android.gms.vision.Detector
 import com.google.android.gms.vision.barcode.Barcode
 import com.google.android.gms.vision.barcode.BarcodeDetector
 import com.utn.frba.cinemapp.R
-import kotlinx.android.synthetic.main.activity_scan.*
 import java.io.IOException
 
 class ScanActivity : AppCompatActivity() {
@@ -33,10 +33,15 @@ class ScanActivity : AppCompatActivity() {
         setContentView(R.layout.activity_scan)
         cameraView = findViewById(R.id.camera_view)
         qr_text = findViewById(R.id.qr_text)
-        initQR()
+        initQR(this)
     }
 
-    fun initQR() {
+    override fun onResume() {
+        super.onResume()
+        initQR(this)
+    }
+
+    fun initQR(context: Context) {
 
         // creo el detector qr
         val barcodeDetector = BarcodeDetector.Builder(this)
@@ -95,6 +100,13 @@ class ScanActivity : AppCompatActivity() {
                     val code = barcodes.valueAt(0).displayValue.toString()
                     Log.v("QR LOG ",code);
                     qr_text!!.text = code;
+                    barcodeDetector.release();
+                    val scanReadyIntent = Intent(context, ScanReadyActivity::class.java)
+                    scanReadyIntent.putExtra("code",code)
+                    startActivity(scanReadyIntent)
+
+
+                    //finish()
 
                 }
             }
