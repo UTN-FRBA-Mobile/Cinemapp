@@ -7,6 +7,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.utn.frba.cinemapp.MainActivity
 import com.utn.frba.cinemapp.R
+//import kotlinx.android.synthetic.main.activity_main.optionScan
 import kotlinx.android.synthetic.main.activity_scan_ready.*
 import okhttp3.*
 import org.json.JSONArray
