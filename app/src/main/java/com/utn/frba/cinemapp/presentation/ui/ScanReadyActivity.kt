@@ -9,6 +9,7 @@ import com.utn.frba.cinemapp.MainActivity
 import com.utn.frba.cinemapp.R
 import kotlinx.android.synthetic.main.activity_scan_ready.*
 import okhttp3.*
+import org.json.JSONArray
 import org.json.JSONObject
 import java.io.IOException
 
@@ -79,6 +80,49 @@ class ScanReadyActivity : AppCompatActivity() {
 
     private fun showDiscounts(response: Response){
         Log.v("response", response.toString())
+        val response = "[\n" +
+                "    {\n" +
+                "        \"description\": \"Descuento de \$100 en el total de tu próxima compra\",\n" +
+                "        \"discount_price\": 100.0,\n" +
+                "        \"id\": \"f6418fa7-f281-4f39-b85f-a5379c823e02\",\n" +
+                "        \"qr\": {\n" +
+                "            \"id\": \"153f27f3-a1d1-443b-9309-54b08d9dfa79\"\n" +
+                "        }\n" +
+                "    },\n" +
+                "    {\n" +
+                "        \"description\": \"Descuento de \$300 en el total de tu próxima compra\",\n" +
+                "        \"discount_price\": 300.0,\n" +
+                "        \"id\": \"a14a59ae-c3b5-44c9-9e00-360e25d5c70b\",\n" +
+                "        \"qr\": {\n" +
+                "            \"id\": \"9a5e1b04-bb93-4582-9143-51c3d700b33c\"\n" +
+                "        }\n" +
+                "    },\n" +
+                "    {\n" +
+                "        \"description\": \"Descuento del 10% del total de tu próxima compra\",\n" +
+                "        \"discount_percent\": 10.0,\n" +
+                "        \"id\": \"a20b2e1b-246a-4537-82e5-e57a41755a10\",\n" +
+                "        \"qr\": {\n" +
+                "            \"id\": \"a6e0a3fa-da8e-452a-a803-9e6ce41c5c3e\"\n" +
+                "        }\n" +
+                "    },\n" +
+                "    {\n" +
+                "        \"description\": \"Descuento de 20% en el total de tu próxima compra\",\n" +
+                "        \"discount_percent\": 20.0,\n" +
+                "        \"id\": \"2db0c6ed-315c-406e-a9dc-d2b1207f3053\",\n" +
+                "        \"qr\": {\n" +
+                "            \"id\": \"2e33e630-a760-4f54-92e7-c8fa9162f81e\"\n" +
+                "        }\n" +
+                "    }\n" +
+                "]"
+        val json = JSONObject(response)
+        val array = JSONArray(json)
+        for (i in 0 until array.length()) {
+            val item = array.getJSONObject(i)
+            val d = item.getString("description")
+            Log.v("array",d)
+        }
+
+
     }
 
     private fun setupButtons(){
