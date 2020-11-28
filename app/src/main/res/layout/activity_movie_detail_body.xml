@@ -106,6 +106,7 @@
             android:orientation="vertical" />
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/detailButoon"
             style="@style/AppTheme.Buttons"
             android:layout_width="300dp"
             android:layout_height="wrap_content"
