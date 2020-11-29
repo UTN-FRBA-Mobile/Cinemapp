@@ -58,9 +58,9 @@ class ViewHolderTickets(
         vista.ticket_movie_title.text = ticket.movie.name
         vista.ticket_cine_content.text = ticket.cinema.name
         vista.ticket_estreno_content.text =
-            ticket.cinema.movieDate.format(DateTimeFormatter. ISO_DATE)
+            ticket.cinema.movieDate.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"))
         vista.ticket_horario_content.text =
-            ticket.cinema.movieTime.format(DateTimeFormatter.ISO_TIME)
+            ticket.cinema.movieTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"))
         vista.ticket_sala_content.text = ticket.cinema.room.toString()
         vista.ticket_precio_content.text = ticket.price.toString()
 

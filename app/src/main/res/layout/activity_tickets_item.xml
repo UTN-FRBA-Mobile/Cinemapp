@@ -3,56 +3,35 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/tickets_constraint_layout"
-    android:layout_width="match_parent"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
+    android:layout_marginTop="10sp"
     android:background="?android:attr/selectableItemBackground">
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="16dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="170dp" />
-
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintGuide_begin="180dp" />
 
     <ImageView
         android:id="@+id/ticket_image"
-        android:layout_width="99dp"
-        android:layout_height="155dp"
+        android:layout_width="100dp"
+        android:layout_height="175dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="8dp"
         android:contentDescription="@null"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        android:foregroundGravity="center"
+        app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline" />
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/ticket_movie_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:maxWidth="200sp"
+        android:layout_marginTop="5dp"
         android:lines="2"
+        android:maxWidth="220sp"
         android:text="ticket_movie_title"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/ticket_image"
-        app:layout_constraintTop_toTopOf="@+id/guideline"
-        tools:ignore="HardcodedText" />
+        tools:ignore="HardcodedText,MissingConstraints" />
 
     <TextView
         android:id="@+id/ticket_cine"
