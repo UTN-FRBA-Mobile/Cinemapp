@@ -60,22 +60,6 @@ class ScanReadyActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     title!!.text = "Su descuento  de se ha acreditado con exito"
 
-                   /* val url =
-                        "https://utn-2020-2c-desa-mobile.herokuapp.com/api/v1/discounts/byToken?token=$userToken"
-
-                    val request: Request = Request.Builder()
-                        .url(url)
-                        .get()
-                        .build()
-                    val response = client.newCall(request).execute()
-                    val gson = GsonBuilder().create()
-                    val descuentos = gson.fromJson(response.body()!!.string(), Array<Descuento>::class.java)
-                    for (descuento in descuentos) {
-                        Log.v("descuentos", descuento.description)
-                    }
-
-                    */
-
                 }
             }
         })
