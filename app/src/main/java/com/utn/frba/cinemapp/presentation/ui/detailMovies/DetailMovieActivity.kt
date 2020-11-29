@@ -12,7 +12,7 @@ import com.utn.frba.cinemapp.R
 import com.utn.frba.cinemapp.Select_cinema
 import com.utn.frba.cinemapp.config.URL_PROXY_IMAGES
 import com.utn.frba.cinemapp.data.api.service.MoviesDataStoreImpl
-import com.utn.frba.cinemapp.domain.entities.MovieEntity
+import com.utn.frba.cinemapp.domain.entities.movies.MovieEntity
 import com.utn.frba.cinemapp.domain.servicies.MoviesDataStore
 import kotlinx.android.synthetic.main.activity_movie_detail.*
 import kotlinx.android.synthetic.main.activity_movie_detail.view.*

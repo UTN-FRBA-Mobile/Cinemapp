@@ -1,4 +1,4 @@
-package com.utn.frba.cinemapp.domain.entities
+package com.utn.frba.cinemapp.domain.entities.movies
 
 
 data class VideoEntity(

@@ -19,7 +19,7 @@
         android:usesCleartextTraffic="true">
 
         <activity android:name=".presentation.ui.LoginActivity" />
-        <activity android:name=".presentation.ui.popularMovies.MoviesActivity" />
+        <activity android:name=".presentation.ui.tickets.TicketActivity" />
 
 
         <activity android:name=".Pago"></activity>
