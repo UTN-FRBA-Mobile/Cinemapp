@@ -9,6 +9,7 @@ import com.utn.frba.cinemapp.models.compra
 import com.utn.frba.cinemapp.presentation.ui.LoginActivity
 import com.utn.frba.cinemapp.presentation.ui.ScanActivity
 import com.utn.frba.cinemapp.presentation.ui.popularMovies.MoviesActivity
+import com.utn.frba.cinemapp.presentation.ui.tickets.TicketActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -75,6 +76,11 @@ class MainActivity : AppCompatActivity() {
 
         optionQr.setOnClickListener {
             val scanIntent = Intent(this, ScanActivity::class.java)
+            startActivity(scanIntent)
+        }
+
+        optionTickets.setOnClickListener {
+            val scanIntent = Intent(this, TicketActivity::class.java)
             startActivity(scanIntent)
         }
 

@@ -2,19 +2,16 @@ package com.utn.frba.cinemapp.presentation.ui.tickets
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
 import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
-import com.squareup.picasso.Picasso
 import com.utn.frba.cinemapp.R
-import com.utn.frba.cinemapp.config.URL_PROXY_IMAGES
 import com.utn.frba.cinemapp.domain.entities.tickets.TicketOutEntity
-import com.utn.frba.cinemapp.presentation.ui.detailMovies.DetailMovieActivity
-import kotlinx.android.synthetic.main.activity_popular_movies_item.view.*
+import kotlinx.android.synthetic.main.activity_tickets_item.view.*
+import java.text.SimpleDateFormat
 
 class ListTicketsAdapter(
     private var tickets: List<TicketOutEntity>,
@@ -51,11 +48,8 @@ class ViewHolderTickets(
     @RequiresApi(Build.VERSION_CODES.O)
     fun bind(ticket: TicketOutEntity) {
 
-//        val sdf = SimpleDateFormat("dd/MM/yyyy")
-//        vista.title.text = ticket.title
-//        vista.genre.text = ticket.details?.genres?.joinToString { it.name }
-//        vista.stars.rating = ticket.voteAverage.toFloat() * 0.5f
-//        vista.releaseDate.text = sdf.format(ticket.releaseDate)
+        val sdf = SimpleDateFormat("dd/MM/yyyy")
+        vista.title.text = sdf.format(ticket.purchaseDate)
 
 //        val finalUrl = URL_PROXY_IMAGES + ticket.posterPath?.replace("/", "")
 //        Picasso.get().load(finalUrl).into(vista.movie_image)

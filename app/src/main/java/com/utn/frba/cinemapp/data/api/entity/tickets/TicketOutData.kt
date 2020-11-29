@@ -26,7 +26,7 @@ data class TicketOutData(
     var price: Float,
 
     @SerializedName("purchase_date")
-    var purchaseDate: Float,
+    var purchaseDate: String,
 
     @SerializedName("qr")
     var qr: QrData,
@@ -44,10 +44,10 @@ data class CinemaTicketOutData(
     var cinemaId: UUID,
 
     @SerializedName("movie_date")
-    var movieDate: Date,
+    var movieDate: String,
 
     @SerializedName("movie_time")
-    var movieTime: Timer,
+    var movieTime: String,
 
     @SerializedName("room")
     var room: Int,

@@ -1,6 +1,8 @@
 package com.utn.frba.cinemapp.domain.entities.tickets
 
 import com.utn.frba.cinemapp.domain.entities.QrEntity
+import java.time.LocalDate
+import java.time.LocalTime
 import java.util.*
 
 
@@ -12,7 +14,7 @@ data class TicketOutEntity(
     var discounts: List<UUID>,
     var movie: MovieTicketOutEntity,
     var price: Float,
-    var purchaseDate: Float,
+    var purchaseDate: Date,
     var qr: QrEntity,
     var userId: UUID
 )
@@ -20,8 +22,8 @@ data class TicketOutEntity(
 data class CinemaTicketOutEntity(
     var address: String,
     var cinemaId: UUID,
-    var movieDate: Date,
-    var movieTime: Timer,
+    var movieDate: LocalDate,
+    var movieTime: LocalTime,
     var room: Int,
     var seats: List<Int>,
     var name: String

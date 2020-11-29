@@ -33,6 +33,7 @@
         <activity android:name=".presentation.ui.ScanActivity" />
         <activity android:name=".presentation.ui.ScanReadyActivity" />
         <activity android:name=".presentation.ui.DescuentosActivity" />
+        <activity android:name=".presentation.ui.tickets.TicketActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

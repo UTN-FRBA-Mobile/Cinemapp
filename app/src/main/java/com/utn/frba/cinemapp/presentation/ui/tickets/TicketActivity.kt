@@ -9,7 +9,6 @@ import com.utn.frba.cinemapp.R
 import com.utn.frba.cinemapp.data.api.service.TicketsDataStoreImpl
 import com.utn.frba.cinemapp.domain.entities.tickets.TicketOutEntity
 import com.utn.frba.cinemapp.domain.servicies.TicketsDataStore
-import kotlinx.android.synthetic.main.activity_popular_movies.*
 import kotlinx.android.synthetic.main.activity_tickets.*
 import java.util.*
 
@@ -28,21 +27,21 @@ class TicketActivity : AppCompatActivity() {
 
         ticketsDataStore.getTicketsAsync(
             token = token,
-            onSuccess = { loadTokenSuccess(it) },
+            onSuccess = { loadTicketsSuccess(it) },
             onError = { genericServiceError(it) })
     }
 
-    private fun loadTokenSuccess(tickets: List<TicketOutEntity>) {
+    private fun loadTicketsSuccess(tickets: List<TicketOutEntity>) {
 
         this.tickets = tickets
         tickets_progress.visibility = View.INVISIBLE
 
-        popular_movies_recyclerview.layoutManager = LinearLayoutManager(this)
-        popular_movies_recyclerview.adapter = ListTicketsAdapter(this.tickets, this)
+        tickets_recyclerview.layoutManager = LinearLayoutManager(this)
+        tickets_recyclerview.adapter = ListTicketsAdapter(this.tickets, this)
     }
 
     private fun genericServiceError(t: Throwable) {
-        Log.e(t.localizedMessage, t.stackTrace.toString())
+        Log.e("t.localizedMessage", t.toString())
     }
 
 }
