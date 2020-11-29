@@ -38,8 +38,7 @@
             android:id="@+id/detail_body_overwiev_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:textSize="14sp" />
+            android:textSize="16sp" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/detail_body_trailers"
@@ -101,7 +100,7 @@
             android:id="@+id/detail_body_recyclerView_reviews"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginBottom="20dp"
             android:nestedScrollingEnabled="false"
             android:orientation="vertical" />
 

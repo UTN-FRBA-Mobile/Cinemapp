@@ -14,7 +14,6 @@ import com.utn.frba.cinemapp.config.URL_PROXY_IMAGES
 import com.utn.frba.cinemapp.data.api.service.MoviesDataStoreImpl
 import com.utn.frba.cinemapp.domain.entities.MovieEntity
 import com.utn.frba.cinemapp.domain.servicies.MoviesDataStore
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_movie_detail.*
 import kotlinx.android.synthetic.main.activity_movie_detail.view.*
 import kotlinx.android.synthetic.main.activity_movie_detail_body.*
@@ -46,7 +45,7 @@ class DetailMovieActivity : AppCompatActivity() {
             onSuccess = { loadDetailMovieSuccess(it) },
             onError = { genericServiceError(it) })
 
-        detailButoon.setOnClickListener{
+        detailButoon.setOnClickListener {
             val pruebaLocationIntent = Intent(this, Select_cinema::class.java).apply {
             }
             startActivity(pruebaLocationIntent);
@@ -120,6 +119,10 @@ class DetailMovieActivity : AppCompatActivity() {
             detail_body.detail_body_reviews_empty.visibility = View.VISIBLE
             return
         }
+
+        detail_body.detail_body_recyclerView_reviews.layoutManager = LinearLayoutManager(this)
+        detail_body.detail_body_recyclerView_reviews.adapter =
+            ListReviewsAdapter(this.movie.details?.reviews!!)
 
     }
 
