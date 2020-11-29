@@ -14,6 +14,7 @@ import com.utn.frba.cinemapp.config.URL_PROXY_IMAGES
 import com.utn.frba.cinemapp.data.api.service.MoviesDataStoreImpl
 import com.utn.frba.cinemapp.domain.entities.MovieEntity
 import com.utn.frba.cinemapp.domain.servicies.MoviesDataStore
+import com.utn.frba.cinemapp.models.compra
 import kotlinx.android.synthetic.main.activity_movie_detail.*
 import kotlinx.android.synthetic.main.activity_movie_detail.view.*
 import kotlinx.android.synthetic.main.activity_movie_detail_body.*
@@ -26,6 +27,7 @@ class DetailMovieActivity : AppCompatActivity() {
 
     companion object {
         const val KEY_MOVIE_SELECTED_ID = "KEY_ID_SELECTED_ID"
+        const val KEY_COMPRA = "compra"
     }
 
     private val moviesDataStore: MoviesDataStore = MoviesDataStoreImpl()
@@ -46,9 +48,22 @@ class DetailMovieActivity : AppCompatActivity() {
             onError = { genericServiceError(it) })
 
         detailButoon.setOnClickListener {
+
             val pruebaLocationIntent = Intent(this, Select_cinema::class.java).apply {
             }
-            startActivity(pruebaLocationIntent);
+
+            var compraInstance = intent.getSerializableExtra(KEY_COMPRA)
+            if (compraInstance == null) {
+                compraInstance = compra()
+            }
+
+            compraInstance = compraInstance as compra
+            compraInstance.idPelicula = this.movie.id
+
+            pruebaLocationIntent.putExtra(KEY_COMPRA, compraInstance)
+            Log.i("compraInstance", compraInstance.toString())
+
+            startActivity(pruebaLocationIntent)
         }
     }
 

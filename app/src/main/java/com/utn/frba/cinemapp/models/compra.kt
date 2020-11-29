@@ -7,5 +7,6 @@ data class compra(var idCine: String = "",
                   var listaAsientos: List<String> = emptyList(),
                   var numeroTarjeta: String = "",
                   var idUsuario: String = "",
-                  var email: String = ""
+                  var email: String = "",
+                  var idPelicula: Int = 0
 ): Serializable
