@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.utn.frba.cinemapp.models.compra
 import com.utn.frba.cinemapp.presentation.ui.LoginActivity
 import com.utn.frba.cinemapp.presentation.ui.ScanActivity
-import com.utn.frba.cinemapp.presentation.ui.tickets.TicketActivity
+import com.utn.frba.cinemapp.presentation.ui.popularMovies.MoviesActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 
@@ -23,29 +23,27 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-
         //Si estoy registrado, obtengo el email
         val bundle: Bundle? = intent.extras;
 
-        if(bundle != null){
+        if (bundle != null) {
             compraTicket = bundle.getSerializable("compra") as compra
             mail = compraTicket.email
             idUsuario = compraTicket.idUsuario
 
-        }
-        else{
+        } else {
             mail = ""
             idUsuario = ""
         }
         // Configura los eventos de los botones
-        setupButton(mail?: "", idUsuario?: "");
+        setupButton(mail ?: "", idUsuario ?: "");
     }
 
     override fun onBackPressed() {
         finishAffinity();
     }
 
-    private fun setupButton(email: String, idUsuario: String){
+    private fun setupButton(email: String, idUsuario: String) {
         val prefs =
             getSharedPreferences("userToken", Context.MODE_PRIVATE)
         val name =
@@ -53,8 +51,8 @@ class MainActivity : AppCompatActivity() {
         Log.v("User Token", name!!)
 
         //Si el email tiene datos, los muestro en el label
-        if(email.isNotEmpty()){
-            mainTextUser.setText( getString(R.string.app_welcome ,  email)   )
+        if (email.isNotEmpty()) {
+            mainTextUser.setText(getString(R.string.app_welcome, email))
         }
 
         //Configura botón de Login
@@ -64,7 +62,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         optionMovies.setOnClickListener {
-            val moviesIntent = Intent(this, TicketActivity::class.java)
+            val moviesIntent = Intent(this, MoviesActivity::class.java)
             startActivity(moviesIntent)
         }
 
