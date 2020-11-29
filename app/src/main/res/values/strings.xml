@@ -45,5 +45,6 @@
     <string name="pelicula_detalle_comentarios">Comentarios</string>
     <string name="pelicula_detalle_sin_comentarios">Actualmente sin comentarios</string>
     <string name="pelicula_detalle_boton_comprar_entradas">Comprar Entradas</string>
+    <string name="app_portada_descuentos">Ver descuentos</string>
 
 </resources>

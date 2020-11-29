@@ -1,16 +1,14 @@
 package com.utn.frba.cinemapp.presentation.ui
 
+import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
-import com.utn.frba.cinemapp.MainActivity
-import com.utn.frba.cinemapp.R
 import androidx.appcompat.app.AlertDialog
-import com.google.gson.Gson
+import androidx.appcompat.app.AppCompatActivity
+import com.utn.frba.cinemapp.MainActivity
 import com.utn.frba.cinemapp.Pago
+import com.utn.frba.cinemapp.R
 import com.utn.frba.cinemapp.interfaces.CinesApi
-import com.utn.frba.cinemapp.models.cine
 import com.utn.frba.cinemapp.models.compra
 import com.utn.frba.cinemapp.models.login
 import kotlinx.android.synthetic.main.activity_login.*
@@ -19,6 +17,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
+
 
 class LoginActivity : AppCompatActivity() {
     lateinit var retrofit: Retrofit
@@ -100,6 +99,11 @@ class LoginActivity : AppCompatActivity() {
             val retornoLogin: Intent
 
             val bundle: Bundle? = intent.extras;
+
+            val editor =
+                getSharedPreferences("userToken", Context.MODE_PRIVATE).edit()
+            editor.putString("userToken",  logueado.token.toString())
+            editor.apply()
 
             if(bundle != null){
                 compraTicket = bundle.getSerializable("compra") as compra
