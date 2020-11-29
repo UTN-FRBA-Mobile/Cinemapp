@@ -33,7 +33,7 @@
         android:layout_width="99dp"
         android:layout_height="155dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="5dp"
         android:layout_marginBottom="8dp"
         android:contentDescription="@null"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
@@ -41,12 +41,13 @@
         app:layout_constraintTop_toTopOf="@+id/guideline" />
 
     <TextView
-        android:id="@+id/title"
+        android:id="@+id/ticket_movie_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
+        android:maxWidth="200sp"
         android:lines="2"
-        android:text="title"
+        android:text="ticket_movie_title"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/ticket_image"
@@ -54,61 +55,148 @@
         tools:ignore="HardcodedText" />
 
     <TextView
-        android:id="@+id/genrePrefix"
+        android:id="@+id/ticket_cine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:text="Generos:"
+        android:layout_marginTop="5dp"
+        android:text="Cine:"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/ticket_image"
-        app:layout_constraintTop_toBottomOf="@+id/releaseDatePrefix"
+        app:layout_constraintTop_toBottomOf="@+id/ticket_purchase_date"
         tools:ignore="HardcodedText" />
 
     <TextView
-        android:id="@+id/genre"
+        android:id="@+id/ticket_cine_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
         android:lines="2"
-        android:text="genre"
-        app:layout_constraintStart_toEndOf="@+id/genrePrefix"
-        app:layout_constraintTop_toBottomOf="@+id/releaseDatePrefix"
+        android:text="ticket_cine_content"
+        app:layout_constraintStart_toEndOf="@+id/ticket_cine"
+        app:layout_constraintTop_toBottomOf="@+id/ticket_purchase_date"
         tools:ignore="HardcodedText" />
 
     <TextView
-        android:id="@+id/releaseDatePrefix"
+        android:id="@+id/ticket_purchase_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
-        android:text="Fecha de estreno:"
+        android:layout_marginTop="5dp"
+        android:text="Fecha de compra:"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/ticket_image"
-        app:layout_constraintTop_toBottomOf="@+id/title"
+        app:layout_constraintTop_toBottomOf="@+id/ticket_movie_title"
         tools:ignore="HardcodedText" />
 
     <TextView
-        android:id="@+id/releaseDate"
+        android:id="@+id/ticket_purchase_date_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
-        android:text="releaseDate"
-        app:layout_constraintStart_toEndOf="@+id/releaseDatePrefix"
-        app:layout_constraintTop_toBottomOf="@+id/title"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:text="ticket_purchase_date_content"
+        app:layout_constraintStart_toEndOf="@+id/ticket_purchase_date"
+        app:layout_constraintTop_toBottomOf="@+id/ticket_movie_title"
         tools:ignore="HardcodedText" />
 
-    <RatingBar
-        android:id="@+id/stars"
-        style="@style/stars"
+    <TextView
+        android:id="@+id/ticket_estreno"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginBottom="4dp"
-        android:stepSize="0.1"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintStart_toEndOf="@+id/ticket_image" />
+        android:layout_marginTop="5dp"
+        android:text="Fecha de entreno:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/ticket_image"
+        app:layout_constraintTop_toBottomOf="@+id/ticket_cine"
+        tools:ignore="HardcodedText"
+        tools:layout_editor_absoluteX="127dp" />
+
+    <TextView
+        android:id="@+id/ticket_estreno_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:text="ticket_purchase_date_content"
+        app:layout_constraintStart_toEndOf="@+id/ticket_estreno"
+        app:layout_constraintTop_toBottomOf="@+id/ticket_cine"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/ticket_horario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:text="Horario:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/ticket_image"
+        app:layout_constraintTop_toBottomOf="@+id/ticket_estreno"
+        tools:ignore="HardcodedText"
+        tools:layout_editor_absoluteX="127dp" />
+
+    <TextView
+        android:id="@+id/ticket_horario_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:text="ticket_purchase_date_content"
+        app:layout_constraintStart_toEndOf="@+id/ticket_horario"
+        app:layout_constraintTop_toBottomOf="@+id/ticket_estreno"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/ticket_sala"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:text="Sala:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/ticket_image"
+        app:layout_constraintTop_toBottomOf="@+id/ticket_horario"
+        tools:ignore="HardcodedText"
+        tools:layout_editor_absoluteX="127dp" />
+
+    <TextView
+        android:id="@+id/ticket_sala_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:text="ticket_purchase_date_content"
+        app:layout_constraintStart_toEndOf="@+id/ticket_sala"
+        app:layout_constraintTop_toBottomOf="@+id/ticket_horario"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/ticket_precio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="150sp"
+        android:layout_marginTop="5dp"
+        android:text="Precio: $"
+        android:textColor="@color/colorAzulMarino"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/ticket_image"
+        app:layout_constraintTop_toBottomOf="@+id/ticket_sala"
+        tools:ignore="HardcodedText" />
+
+    <TextView
+        android:id="@+id/ticket_precio_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5sp"
+        android:layout_marginTop="5dp"
+        android:text="ticket_precio"
+        android:textColor="@color/colorAzulMarino"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/ticket_precio"
+        app:layout_constraintTop_toBottomOf="@+id/ticket_sala"
+        tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

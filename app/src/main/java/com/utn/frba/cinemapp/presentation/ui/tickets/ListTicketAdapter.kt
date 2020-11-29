@@ -15,6 +15,7 @@ import com.utn.frba.cinemapp.config.URL_PROXY_IMAGES
 import com.utn.frba.cinemapp.domain.entities.tickets.TicketOutEntity
 import kotlinx.android.synthetic.main.activity_tickets_item.view.*
 import java.text.SimpleDateFormat
+import java.time.format.DateTimeFormatter
 
 class ListTicketsAdapter(
     private var tickets: List<TicketOutEntity>,
@@ -52,7 +53,16 @@ class ViewHolderTickets(
     fun bind(ticket: TicketOutEntity) {
 
         val sdf = SimpleDateFormat("dd/MM/yyyy")
-        vista.title.text = sdf.format(ticket.purchaseDate)
+        vista.ticket_purchase_date_content.text = sdf.format(ticket.purchaseDate)
+
+        vista.ticket_movie_title.text = ticket.movie.name
+        vista.ticket_cine_content.text = ticket.cinema.name
+        vista.ticket_estreno_content.text =
+            ticket.cinema.movieDate.format(DateTimeFormatter. ISO_DATE)
+        vista.ticket_horario_content.text =
+            ticket.cinema.movieTime.format(DateTimeFormatter.ISO_TIME)
+        vista.ticket_sala_content.text = ticket.cinema.room.toString()
+        vista.ticket_precio_content.text = ticket.price.toString()
 
         val finalUrl = URL_PROXY_IMAGES + ticket.movie.posterId.replace("/", "")
         Picasso.get().load(finalUrl).into(vista.ticket_image)
