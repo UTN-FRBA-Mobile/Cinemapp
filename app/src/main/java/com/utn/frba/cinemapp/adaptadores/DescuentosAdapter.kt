@@ -1,23 +1,14 @@
 package com.utn.frba.cinemapp.adaptadores
 
-import android.content.Intent
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.utn.frba.cinemapp.R
-import com.utn.frba.cinemapp.Select_cinema
-import com.utn.frba.cinemapp.Select_seat_time
 import com.utn.frba.cinemapp.models.Descuento
-import com.utn.frba.cinemapp.models.cine
-import com.utn.frba.cinemapp.models.compra
 import kotlinx.android.synthetic.main.item_descuentos.view.*
-import kotlinx.android.synthetic.main.item_select_cinema.view.*
 
-class DescuentosAdapter(var descuentos:List<Descuento>): RecyclerView.Adapter<DescuentosAdapter.ViewHolder>() {
+class DescuentosAdapter(var descuentos: Array<Descuento>): RecyclerView.Adapter<DescuentosAdapter.ViewHolder>() {
 
     var viewHolder: ViewHolder? = null
 

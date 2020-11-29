@@ -1,26 +1,29 @@
 package com.utn.frba.cinemapp.presentation.ui
 
-import android.Manifest
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.GsonBuilder
 import com.utn.frba.cinemapp.R
+import com.utn.frba.cinemapp.adaptadores.DescuentosAdapter
 import com.utn.frba.cinemapp.models.Descuento
+import kotlinx.android.synthetic.main.item_descuentos.*
 import okhttp3.*
 import java.io.IOException
 
 class DescuentosActivity : AppCompatActivity() {
 
+    var descuentos: Array<Descuento>? = null
+    var lista: RecyclerView? = null
+    var layoutManager: RecyclerView.LayoutManager? = null
+    var adaptador: DescuentosAdapter? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.item_descuentos)
-        showDescuentos(this)
-    }
-
-
-    fun showDescuentos(context: Context) {
         val client = OkHttpClient()
         val userToken = getUserToken();
 
@@ -44,12 +47,23 @@ class DescuentosActivity : AppCompatActivity() {
                     val gson = GsonBuilder().create()
                     val descuentos =
                         gson.fromJson(response.body()!!.string(), Array<Descuento>::class.java)
-                    for (descuento in descuentos) {
-                        Log.v("descuentos", descuento.description)
-                    }
+                    showDescuentos(descuentos)
+
+
                 }
             }
         })
+    }
+
+
+    fun showDescuentos(descuentos: Array<Descuento> ) {
+        this.descuentos = descuentos
+        for (descuento in descuentos) {
+            Log.v("descuentos", descuento.description)
+        }
+        lista_descuentos.layoutManager = LinearLayoutManager(this)
+        val adaptador = DescuentosAdapter(this.descuentos!!)
+        lista_descuentos.adapter = adaptador
     }
 
     private fun getUserToken() :String?{

@@ -5,21 +5,18 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal">
 
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/lista_descuentos"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="10sp"
-        android:background="@drawable/button_transparent_without_corner"
-        android:orientation="vertical">
+        android:layout_height="match_parent" >
 
+    </androidx.recyclerview.widget.RecyclerView>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/descuento_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            tools:text="Cines Multiplex lleva adelante la operación de este complejo que es el único que permanece en la peatonal Lavalle donde supieron funcionar, en las épocas de gloria, más de 28 salas de cine." />
-    </LinearLayout>
-
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/descuento_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        tools:text="" />
 
 </LinearLayout>
