@@ -11,7 +11,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="235dp"
         android:layout_weight="4"
         android:background="@drawable/cinemap_logo">
 
@@ -28,20 +28,22 @@
 
     <GridLayout
         android:layout_width="match_parent"
-        android:layout_height="0pt"
-        android:layout_weight="5"
+        android:layout_height="367dp"
+        android:layout_weight="3"
         android:background="@color/bg"
         android:columnCount="2"
         android:columnOrderPreserved="false"
-        android:padding="14dp"
-        android:rowCount="2">
+        android:padding="5dp"
+        android:rowCount="3">
 
-        <!--        fila 1 y columna 1-->
+        <!--        fila 1 columna 2-->
         <androidx.cardview.widget.CardView
             android:id="@+id/optionMovies"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            android:layout_row="0"
             android:layout_rowWeight="1"
+            android:layout_column="0"
             android:layout_columnWeight="1"
             android:layout_marginLeft="16dp"
             android:layout_marginRight="16dp"
@@ -81,7 +83,6 @@
 
         </androidx.cardview.widget.CardView>
 
-        <!--        fila 1 columna 2-->
         <androidx.cardview.widget.CardView
             android:id="@+id/optionLogin"
             android:layout_width="0dp"
@@ -213,7 +214,46 @@
 
         </androidx.cardview.widget.CardView>
 
+        <!-- fila 3 y columna 1-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/optionTickets"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_rowWeight="1"
+            android:layout_columnWeight="1"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="16dp"
+            app:cardCornerRadius="8dp"
+            app:cardElevation="8dp">
+
+            <androidx.appcompat.widget.LinearLayoutCompat
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|center_vertical"
+                android:layout_margin="16dp"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="50sp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/ic_tickets_foreground" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="@string/app_portada_tickets"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorLetraIcono"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </androidx.appcompat.widget.LinearLayoutCompat>
+        </androidx.cardview.widget.CardView>
+
 
     </GridLayout>
+
 
 </LinearLayout>

@@ -1,73 +1,73 @@
-package com.utn.frba.cinemapp.data.api.entity
+package com.utn.frba.cinemapp.data.api.entity.movies
 
 import com.google.gson.annotations.SerializedName
 import java.util.*
 
 data class MovieDetailsData(
 
-        @SerializedName("adult")
+    @SerializedName("adult")
         var adult: Boolean = false,
 
-        @SerializedName("budget")
+    @SerializedName("budget")
         var budget: Int? = null,
 
-        @SerializedName("genres")
+    @SerializedName("genres")
         var genres: List<GenreData>? = null,
 
-        @SerializedName("videos")
+    @SerializedName("videos")
         var videos: VideoResult? = null,
 
-        @SerializedName("reviews")
+    @SerializedName("reviews")
         var reviews: ReviewsResult? = null,
 
-        @SerializedName("homepage")
+    @SerializedName("homepage")
         var homepage: String? = null,
 
-        @SerializedName("id")
+    @SerializedName("id")
         var id: Int = -1,
 
-        @SerializedName("imdb_id")
+    @SerializedName("imdb_id")
         var imdbId: String? = null,
 
-        @SerializedName("popularity")
+    @SerializedName("popularity")
         var popularity: Double = 0.0,
 
-        @SerializedName("revenue")
+    @SerializedName("revenue")
         var revenue: Int? = null,
 
-        @SerializedName("runtime")
+    @SerializedName("runtime")
         var runtime: Int? = null,
 
-        @SerializedName("tagline")
+    @SerializedName("tagline")
         var tagline: String? = null,
 
-        @SerializedName("video")
+    @SerializedName("video")
         var video: Boolean = false,
 
-        @SerializedName("vote_average")
+    @SerializedName("vote_average")
         var voteAverage: Double = 0.0,
 
-        @SerializedName("vote_count")
+    @SerializedName("vote_count")
         var voteCount: Int = 0,
 
-        @SerializedName("title")
+    @SerializedName("title")
         var title: String,
 
-        @SerializedName("poster_path")
+    @SerializedName("poster_path")
         var posterPath: String,
 
-        @SerializedName("original_language")
+    @SerializedName("original_language")
         var originalLanguage: String,
 
-        @SerializedName("original_title")
+    @SerializedName("original_title")
         var originalTitle: String,
 
-        @SerializedName("backdrop_path")
+    @SerializedName("backdrop_path")
         var backdropPath: String,
 
-        @SerializedName("overview")
+    @SerializedName("overview")
         var overview: String,
 
-        @SerializedName("release_date")
+    @SerializedName("release_date")
         var releaseDate: Date
 )

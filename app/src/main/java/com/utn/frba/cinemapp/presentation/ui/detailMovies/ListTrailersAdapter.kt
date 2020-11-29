@@ -13,7 +13,7 @@ import com.squareup.picasso.Picasso
 import com.utn.frba.cinemapp.R
 import com.utn.frba.cinemapp.config.URL_PROXY_YOUTUBE_IMG
 import com.utn.frba.cinemapp.config.URL_PROXY_YOUTUBE_WATCH
-import com.utn.frba.cinemapp.domain.entities.VideoEntity
+import com.utn.frba.cinemapp.domain.entities.movies.VideoEntity
 import kotlinx.android.synthetic.main.activity_movie_detail_body_item_video.view.*
 
 class ListTrailersAdapter(

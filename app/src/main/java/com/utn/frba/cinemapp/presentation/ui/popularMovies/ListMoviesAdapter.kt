@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 import com.utn.frba.cinemapp.R
 import com.utn.frba.cinemapp.config.URL_PROXY_IMAGES
-import com.utn.frba.cinemapp.domain.entities.MovieEntity
+import com.utn.frba.cinemapp.domain.entities.movies.MovieEntity
 import com.utn.frba.cinemapp.presentation.ui.detailMovies.DetailMovieActivity
 import kotlinx.android.synthetic.main.activity_popular_movies_item.view.*
 import java.text.SimpleDateFormat

@@ -1,8 +1,8 @@
 package com.utn.frba.cinemapp.data.api.mappers
 
-import com.utn.frba.cinemapp.data.api.entity.MovieDetailsData
+import com.utn.frba.cinemapp.data.api.entity.movies.MovieDetailsData
 import com.utn.frba.cinemapp.domain.common.Mapper
-import com.utn.frba.cinemapp.domain.entities.*
+import com.utn.frba.cinemapp.domain.entities.movies.*
 import javax.inject.Inject
 import javax.inject.Singleton
 
