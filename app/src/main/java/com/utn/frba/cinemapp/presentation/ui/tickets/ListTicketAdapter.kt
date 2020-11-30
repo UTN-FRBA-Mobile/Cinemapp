@@ -63,6 +63,7 @@ class ViewHolderTickets(
             ticket.cinema.movieTime.format(DateTimeFormatter.ofPattern("HH:mm:ss"))
         vista.ticket_sala_content.text = ticket.cinema.room.toString()
         vista.ticket_precio_content.text = ticket.price.toString()
+        vista.ticket_butaca_content.text = ticket.cinema.seats.joinToString { it.toString() }
 
         val finalUrl = URL_PROXY_IMAGES + ticket.movie.posterId.replace("/", "")
         Picasso.get().load(finalUrl).into(vista.ticket_image)

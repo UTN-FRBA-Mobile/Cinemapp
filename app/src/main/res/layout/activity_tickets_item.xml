@@ -17,7 +17,8 @@
         android:foregroundGravity="center"
         app:layout_constraintStart_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="16dp" />
 
     <TextView
         android:id="@+id/ticket_movie_title"
@@ -153,6 +154,30 @@
         tools:ignore="HardcodedText" />
 
     <TextView
+        android:id="@+id/ticket_butaca"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:text="Butacas:"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/ticket_image"
+        app:layout_constraintTop_toBottomOf="@+id/ticket_sala"
+        tools:ignore="HardcodedText"
+        tools:layout_editor_absoluteX="127dp" />
+
+    <TextView
+        android:id="@+id/ticket_butaca_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:text="ticket_butaca_content"
+        app:layout_constraintStart_toEndOf="@+id/ticket_butaca"
+        app:layout_constraintTop_toBottomOf="@+id/ticket_sala"
+        tools:ignore="HardcodedText" />
+
+    <TextView
         android:id="@+id/ticket_precio"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -162,7 +187,7 @@
         android:textColor="@color/colorAzulMarino"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/ticket_image"
-        app:layout_constraintTop_toBottomOf="@+id/ticket_sala"
+        app:layout_constraintTop_toBottomOf="@+id/ticket_butaca"
         tools:ignore="HardcodedText" />
 
     <TextView
@@ -175,7 +200,7 @@
         android:textColor="@color/colorAzulMarino"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/ticket_precio"
-        app:layout_constraintTop_toBottomOf="@+id/ticket_sala"
+        app:layout_constraintTop_toBottomOf="@+id/ticket_butaca"
         tools:ignore="HardcodedText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
