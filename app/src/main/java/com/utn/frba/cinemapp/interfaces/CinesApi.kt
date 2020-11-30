@@ -1,9 +1,6 @@
 package com.utn.frba.cinemapp.interfaces
 
-import com.utn.frba.cinemapp.models.cine
-import com.utn.frba.cinemapp.models.login
-import com.utn.frba.cinemapp.models.register
-import com.utn.frba.cinemapp.models.seat
+import com.utn.frba.cinemapp.models.*
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -49,5 +46,11 @@ interface CinesApi {
     ): Call<List<String>>
 
 
+//    {{url}}/api/v1/tickets/byToken?token=acc46483-5eb3-4e33-be1f-71228d06911f
+    @POST("api/v1/tickets/byToken")
+    fun comprar(
+        @Query("token") idUsuario: String,
+        @Body compra: compraFinal
+    ): Call<respuestaCompra>
 
 }
