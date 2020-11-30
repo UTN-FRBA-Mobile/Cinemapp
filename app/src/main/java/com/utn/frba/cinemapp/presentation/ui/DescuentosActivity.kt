@@ -23,12 +23,6 @@ class DescuentosActivity : AppCompatActivity() {
         setContentView(R.layout.activity_descuentos)
         val client = OkHttpClient()
         val userToken = getUserToken();
-        /*var desc: Descuento = Descuento("asd","asdasdasdas","as")
-        var desc2: Descuento = Descuento("awwwwsd","asdasdasdas","as")
-
-        val array = Array(6) {desc}
-        showDescuentos(array)
-        */
         val url =
             "https://utn-2020-2c-desa-mobile.herokuapp.com/api/v1/discounts/byToken?token=$userToken"
 

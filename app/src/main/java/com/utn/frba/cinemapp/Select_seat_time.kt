@@ -14,6 +14,7 @@ import com.utn.frba.cinemapp.interfaces.CinesApi
 import com.utn.frba.cinemapp.models.cine
 import com.utn.frba.cinemapp.models.compra
 import com.utn.frba.cinemapp.models.seat
+import com.utn.frba.cinemapp.presentation.ui.ConfirmacionActivity
 import com.utn.frba.cinemapp.presentation.ui.LoginActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_select_seat_time.*
@@ -208,7 +209,7 @@ class Select_seat_time : AppCompatActivity() {
             else{
                 // TODO agregar el nombre id de usuario
                 //compraTicketconAsientos = compra(compraTicket.idCine,horaSeleccionada,seats)
-                PagoIntent = Intent(this, Pago::class.java).apply { }
+                PagoIntent = Intent(this, ConfirmacionActivity::class.java).apply { }
             }
 //            val PagoIntent = Intent(this, Pago::class.java).apply {
 //            }

@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.utn.frba.cinemapp.models.compra
 import com.utn.frba.cinemapp.presentation.ui.LoginActivity
@@ -30,8 +31,8 @@ class MainActivity : AppCompatActivity() {
 
         if (bundle != null) {
             compraTicket = bundle.getSerializable("compra") as compra
-            mail = compraTicket.email
-            idUsuario = compraTicket.idUsuario
+            mail = compraTicket.email.toString()
+            idUsuario = compraTicket.idUsuario.toString()
 
         } else {
             mail = ""
@@ -76,8 +77,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         optionQr.setOnClickListener {
-            val scanIntent = Intent(this, ScanActivity::class.java)
-            startActivity(scanIntent)
+            if (getUserToken() !== ""){
+                val scanIntent = Intent(this, ScanActivity::class.java)
+                startActivity(scanIntent)
+            }else{
+                mostrarAlerta("Necesita estar logueado para usar el QR")
+            }
+
         }
 
         optionTickets.setOnClickListener {
@@ -93,5 +99,19 @@ class MainActivity : AppCompatActivity() {
             startActivity(activity)
         }
 
+    }
+    private fun mostrarAlerta( texto: String){
+        var builder = AlertDialog.Builder(this);
+        builder.setTitle("Error");
+        builder.setMessage(texto);
+        builder.setPositiveButton("Aceptar", null);
+        var dialog: AlertDialog = builder.create();
+        dialog.show();
+    }
+
+    private fun getUserToken() :String?{
+        val prefs =
+            getSharedPreferences("userToken", Context.MODE_PRIVATE)
+        return prefs.getString("userToken", "")
     }
 }
