@@ -1,16 +1,18 @@
 package com.utn.frba.cinemapp.data.api.service
 
 import android.util.Log
+import com.utn.frba.cinemapp.config.URL_BACKEND
 import com.utn.frba.cinemapp.config.URL_PROXY_MOVIES
-import com.utn.frba.cinemapp.data.api.entity.GenresResult
-import com.utn.frba.cinemapp.data.api.entity.MovieDetailsData
-import com.utn.frba.cinemapp.data.api.entity.MovieListResult
+import com.utn.frba.cinemapp.data.api.entity.movies.GenresResult
+import com.utn.frba.cinemapp.data.api.entity.movies.MovieDetailsData
+import com.utn.frba.cinemapp.data.api.entity.movies.MovieListResult
 import com.utn.frba.cinemapp.data.api.mappers.DetailsMovieDataEntityMapper
 import com.utn.frba.cinemapp.data.api.mappers.MovieDataEntityMapper
+import com.utn.frba.cinemapp.data.api.rest.ServerMovieRestApi
 import com.utn.frba.cinemapp.data.api.rest.ThemoviedbRestApi
-import com.utn.frba.cinemapp.domain.entities.GenreEntity
-import com.utn.frba.cinemapp.domain.entities.MovieDetailsEntity
-import com.utn.frba.cinemapp.domain.entities.MovieEntity
+import com.utn.frba.cinemapp.domain.entities.movies.GenreEntity
+import com.utn.frba.cinemapp.domain.entities.movies.MovieDetailsEntity
+import com.utn.frba.cinemapp.domain.entities.movies.MovieEntity
 import com.utn.frba.cinemapp.domain.servicies.MoviesDataStore
 import retrofit2.Call
 import retrofit2.Callback
@@ -24,18 +26,25 @@ class MoviesDataStoreImpl : MoviesDataStore {
     private val movieDataMapper = MovieDataEntityMapper()
     private val detailDataMapper = DetailsMovieDataEntityMapper()
 
-    private val retrofit = Retrofit.Builder()
+    private val restTheMovieDb = Retrofit.Builder()
         .baseUrl(URL_PROXY_MOVIES)
         .addConverterFactory(GsonConverterFactory.create())
         .build()
-    private val apiRest = retrofit.create<ThemoviedbRestApi>(ThemoviedbRestApi::class.java)
+        .create<ThemoviedbRestApi>(ThemoviedbRestApi::class.java)
+
+    private val restServer = Retrofit.Builder()
+        .baseUrl(URL_BACKEND)
+        .addConverterFactory(GsonConverterFactory.create())
+        .build()
+        .create<ServerMovieRestApi>(ServerMovieRestApi::class.java)
+
 
     override fun getPopularMoviesAsync(
         onSuccess: (List<MovieEntity>) -> Unit,
         onError: (t: Throwable) -> Unit
     ) {
 
-        apiRest.getPopularMovies().enqueue(object : Callback<MovieListResult> {
+        restServer.getPopularMovies().enqueue(object : Callback<MovieListResult> {
 
             override fun onFailure(call: Call<MovieListResult>, t: Throwable) {
                 onError(t)
@@ -58,7 +67,7 @@ class MoviesDataStoreImpl : MoviesDataStore {
         onSuccess: (MovieEntity) -> Unit,
         onError: (t: Throwable) -> Unit
     ) {
-        apiRest.getDetailMovie(id).enqueue(object : Callback<MovieDetailsData> {
+        restServer.getDetailMovie(id).enqueue(object : Callback<MovieDetailsData> {
 
             override fun onResponse(
                 call: Call<MovieDetailsData>,
@@ -79,7 +88,7 @@ class MoviesDataStoreImpl : MoviesDataStore {
         onSuccess: (List<GenreEntity>) -> Unit,
         onError: (t: Throwable) -> Unit
     ) {
-        apiRest.getGenres().enqueue(object : Callback<GenresResult> {
+        restTheMovieDb.getGenres().enqueue(object : Callback<GenresResult> {
 
             override fun onResponse(
                 call: Call<GenresResult>,

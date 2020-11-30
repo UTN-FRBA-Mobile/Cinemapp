@@ -1,8 +1,8 @@
 package com.utn.frba.cinemapp.data.api.mappers
 
-import com.utn.frba.cinemapp.data.api.entity.MovieData
+import com.utn.frba.cinemapp.data.api.entity.movies.MovieData
 import com.utn.frba.cinemapp.domain.common.Mapper
-import com.utn.frba.cinemapp.domain.entities.MovieEntity
+import com.utn.frba.cinemapp.domain.entities.movies.MovieEntity
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -23,7 +23,7 @@ class MovieDataEntityMapper @Inject constructor() : Mapper<MovieData, MovieEntit
             originalTitle = from.originalTitle,
             releaseDate = from.releaseDate,
             overview = from.overview,
-            genre_ids = from.genre_ids
+            genreIds = from.genreIds
         )
     }
 }

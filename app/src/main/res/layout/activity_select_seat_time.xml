@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Select_seat_time"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/bg"
+    android:weightSum="10">
+
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10sp"
+        android:layout_marginTop="2sp"
+        android:layout_weight="1">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/selectSeat_select_date"
+            android:textSize="15sp"
+            android:textStyle="bold">
+        </androidx.appcompat.widget.AppCompatTextView>
+
+<!--        <Spinner-->
+<!--            android:id="@+id/selecSeatDateSpinner"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_gravity="center"-->
+<!--            />-->
+
+        <LinearLayout
+            android:id="@+id/dateLinearLayoutY"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15sp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="10sp"
+            android:layout_marginTop="2sp"
+            android:layout_weight="1">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/TextViewTimeSeat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/selectSeat_select_time"
+                android:textSize="15sp"
+                android:textStyle="bold">
+            </androidx.appcompat.widget.AppCompatTextView>
+
+<!--            <Spinner-->
+<!--                android:id="@+id/selecSeatSpinner"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:entries="@array/spinnerSelectSeat"-->
+<!--                />-->
+            <LinearLayout
+                android:id="@+id/horaLinearLayoutY"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15sp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_transparent"
+            android:textSize="50sp"
+            android:textAlignment="center"
+            android:textColor="@color/colorRojo"
+            android:layout_marginBottom="1sp"
+            android:layout_marginTop="2sp"
+            android:layout_marginLeft="5sp"
+            android:layout_marginRight="5sp"
+            android:text="@string/selectSeat_screen"
+            android:layout_gravity="center"
+            android:layout_weight="1"/>
+
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="400sp"
+        android:layout_marginBottom="1sp"
+        android:layout_weight="7"
+        android:fadingEdge="horizontal|vertical">
+
+        <LinearLayout
+            android:id="@+id/seatLinearLayoutY"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15sp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    </HorizontalScrollView>
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/continueSelectSeatButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_acept"
+            android:text="@string/aceptar"
+            android:textSize="20sp"
+            android:textColor="@color/colorNegro"
+            android:layout_marginTop="1sp"
+            android:layout_marginBottom="10sp"
+            android:layout_marginLeft="40dp"
+            android:layout_marginRight="40dp"
+            android:layout_gravity="center"
+            android:layout_weight="1">
+        </androidx.appcompat.widget.AppCompatButton>
+
+
+</LinearLayout>
