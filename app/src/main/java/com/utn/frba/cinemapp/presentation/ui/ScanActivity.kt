@@ -17,6 +17,7 @@ import com.google.android.gms.vision.Detector
 import com.google.android.gms.vision.barcode.Barcode
 import com.google.android.gms.vision.barcode.BarcodeDetector
 import com.utn.frba.cinemapp.R
+import kotlinx.android.synthetic.main.activity_scan_ready.*
 import java.io.IOException
 
 class ScanActivity : AppCompatActivity() {
@@ -33,6 +34,12 @@ class ScanActivity : AppCompatActivity() {
         setContentView(R.layout.activity_scan)
         cameraView = findViewById(R.id.camera_view)
         qr_text = findViewById(R.id.qr_text)
+
+        optionDescuentos.setOnClickListener {
+            val scanIntent = Intent(this, DescuentosActivity::class.java)
+            startActivity(scanIntent)
+        }
+
         initQR(this)
     }
 
@@ -99,7 +106,6 @@ class ScanActivity : AppCompatActivity() {
                 if (barcodes.size() > 0) {
                     val code = barcodes.valueAt(0).displayValue.toString()
                     Log.v("QR LOG ",code);
-                    qr_text!!.text = code;
                     barcodeDetector.release();
                     val scanReadyIntent = Intent(context, ScanReadyActivity::class.java)
                     scanReadyIntent.putExtra("code",code)

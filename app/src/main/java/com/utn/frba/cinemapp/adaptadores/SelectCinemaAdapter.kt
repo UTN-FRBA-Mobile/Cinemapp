@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 import com.utn.frba.cinemapp.R
 import com.utn.frba.cinemapp.Select_cinema
 import com.utn.frba.cinemapp.Select_seat_time
@@ -23,20 +24,17 @@ class SelectCinemaAdapter(var cines:List<cine>, compras: compra): RecyclerView.A
         fun render(cine: cine, compra: compra){
             view.select_cinema_adress.text = cine.adress
             view.select_cinema_name.text = cine.name
-            view.select_cinema_description.text = cine.description
+            view.select_cinema_description.text = cine.description.substring(0,60)
+            Picasso.get().load("https://utn-2020-2c-desa-mobile.herokuapp.com/api/v1/cinemas/${cine.identificador}/img").into(view.select_cinema_image)
 
             //Le agrego el listener para que me envíe a la siguiente pantalla
             view.setOnClickListener(){
                 compra.idCine = cine.identificador
 
-                //var compraTicket: compra = compra(cine.identificador)
                 val selectSeat = Intent(it.context, Select_seat_time::class.java).apply {
-//                    var bundle: Bundle = Bundle().putSerializable("compra",compraTicket)
-//                    bundle.putSerializable("compra", compraTicket)
                 }
                 selectSeat.putExtra("compra",compra)
                 it.context.startActivity(selectSeat);
-
             }
         }
     }
@@ -52,6 +50,5 @@ class SelectCinemaAdapter(var cines:List<cine>, compras: compra): RecyclerView.A
 
     override fun onBindViewHolder(holder: SelectCinemaHolder, position: Int) {
         holder.render(cines[position], comprar)
-
     }
 }
