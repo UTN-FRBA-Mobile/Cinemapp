@@ -41,14 +41,41 @@
         android:weightSum="10"
         >
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:layout_width="60dp"
-            android:layout_height="77dp"
-            android:layout_gravity="right"
-            android:layout_weight="1"
-            android:src="@mipmap/nfc_foreground">
 
-        </androidx.appcompat.widget.AppCompatImageView>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginLeft="30sp"
+            android:layout_marginRight="30sp"
+            android:layout_weight="4"
+            android:orientation="horizontal"
+            android:elevation="20sp"
+            android:weightSum="10"
+            >
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/pagoValorAPagar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="30sp"
+                android:textColor="@color/colorRojo"
+                android:textStyle="bold"
+                android:layout_weight="9">
+
+            </androidx.appcompat.widget.AppCompatTextView>
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="60dp"
+                android:layout_height="77dp"
+                android:layout_gravity="right"
+                android:layout_weight="1"
+                android:src="@mipmap/nfc_foreground">
+
+            </androidx.appcompat.widget.AppCompatImageView>
+        </LinearLayout>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/PagoViewTextNumberCard"
@@ -57,20 +84,21 @@
             android:layout_gravity="left"
             android:layout_margin="1sp"
             android:textSize="20sp"
-            android:layout_weight="4"
+            android:layout_weight="3"
             android:text="XXXX XXXX XXXX XXXX"
             tools:text="XXXX XXXX XXXX XXXX">
 
-v        </androidx.appcompat.widget.AppCompatTextView>
+        </androidx.appcompat.widget.AppCompatTextView>
 
 
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/pagoViewTextName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="1sp"
             android:textSize="20sp"
-            android:layout_weight="4"
+            android:layout_weight="3"
             android:text="Sarasa Sarasa Sarasa"
             tools:text="Sarasa Sarasa Sarasa">
 
