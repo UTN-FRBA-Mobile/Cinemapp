@@ -18,15 +18,18 @@ class TicketActivity : AppCompatActivity() {
 
     private lateinit var tickets: List<TicketOutEntity>
 
+    //    private var token: UUID = UUID.randomUUID()
+    private lateinit var token: UUID
+
     override fun onCreate(savedInstanceState: Bundle?) {
 
-        val token = UUID.fromString("7801faea-11df-4b5e-b237-56758dbfe4f7")
+        this.token = intent.getSerializableExtra("token") as UUID
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_tickets)
 
         ticketsDataStore.getTicketsAsync(
-            token = token,
+            token = this.token,
             onSuccess = { loadTicketsSuccess(it) },
             onError = { genericServiceError(it) })
     }

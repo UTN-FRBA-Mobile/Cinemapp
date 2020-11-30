@@ -11,12 +11,13 @@ import com.utn.frba.cinemapp.presentation.ui.ScanActivity
 import com.utn.frba.cinemapp.presentation.ui.popularMovies.MoviesActivity
 import com.utn.frba.cinemapp.presentation.ui.tickets.TicketActivity
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
     lateinit var compraTicket: compra
     lateinit var mail: String
-    lateinit var idUsuario: String
+    var idUsuario: String? = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -80,8 +81,16 @@ class MainActivity : AppCompatActivity() {
         }
 
         optionTickets.setOnClickListener {
-            val scanIntent = Intent(this, TicketActivity::class.java)
-            startActivity(scanIntent)
+
+            if (this.idUsuario == "") {
+                Log.i("idUsuario", idUsuario)
+                startActivity(Intent(this, LoginActivity::class.java))
+                return@setOnClickListener
+            }
+
+            val activity = Intent(this, TicketActivity::class.java)
+            activity.putExtra("token", UUID.fromString(this.idUsuario))
+            startActivity(activity)
         }
 
     }
