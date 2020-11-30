@@ -1,39 +1,50 @@
 package com.utn.frba.cinemapp.adaptadores
 
+import android.content.Context
+import android.os.Build
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.utn.frba.cinemapp.R
 import com.utn.frba.cinemapp.models.Descuento
-import kotlinx.android.synthetic.main.item_descuentos.view.*
+import kotlinx.android.synthetic.main.activity_descuentos_item.view.*
 
-class DescuentosAdapter(var descuentos: Array<Descuento>): RecyclerView.Adapter<DescuentosAdapter.ViewHolder>() {
+class DescuentosAdapter(
+    private var listDescuentos: Array<Descuento>,
+    private var context: Context
+) : RecyclerView.Adapter<ViewHolder>() {
 
-    var viewHolder: ViewHolder? = null
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DescuentosAdapter.ViewHolder {
-        val layoutInflater = LayoutInflater.from(parent.context)
-        val vista = layoutInflater.inflate(R.layout.item_descuentos,parent,false)
-        viewHolder = ViewHolder(vista)
-        return viewHolder as ViewHolder
+        val inflater: View = LayoutInflater.from(parent.context).inflate(
+            R.layout.activity_descuentos_item,
+            parent,
+            false
+        )
+
+        return ViewHolder(inflater, this.context)
     }
 
     override fun getItemCount(): Int {
-        return descuentos.size;
+        return listDescuentos.size
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = descuentos[position]
-        holder.descripcion = item.description
-
+        holder.bind(listDescuentos[position])
     }
+}
 
-    class ViewHolder(vista: View):RecyclerView.ViewHolder(vista){
-        var vista = vista
-        var descripcion: String? = null
-        init {
-            descripcion = vista.descuento_description.toString()
-        }
+class ViewHolder(
+    private var vista: View,
+    private var context: Context
+) : RecyclerView.ViewHolder(vista) {
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun bind(descuento: Descuento) {
+        vista.descripcion.text = descuento.description
+
     }
 }
