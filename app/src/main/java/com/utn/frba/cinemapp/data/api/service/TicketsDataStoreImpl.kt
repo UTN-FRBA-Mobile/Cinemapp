@@ -1,6 +1,8 @@
 package com.utn.frba.cinemapp.data.api.service
 
+import android.os.Build
 import android.util.Log
+import androidx.annotation.RequiresApi
 import com.utn.frba.cinemapp.config.URL_BACKEND
 import com.utn.frba.cinemapp.data.api.entity.tickets.TicketInData
 import com.utn.frba.cinemapp.data.api.entity.tickets.TicketOutData
@@ -59,13 +61,17 @@ class TicketsDataStoreImpl : TicketsDataStore {
                 onError(t)
             }
 
+            @RequiresApi(Build.VERSION_CODES.O)
             override fun onResponse(
                 call: Call<List<TicketOutData>>,
                 response: Response<List<TicketOutData>>
             ) {
                 Log.v("getTicketsAsync", response.body().toString())
-                val r = response.body() as List<*>
-                onSuccess(r.map { ticketsMapper.mapFrom(it as TicketOutData) })
+                val r = mutableListOf<TicketOutData>()
+                if (response.body() != null) {
+                    r.addAll(response.body() as List<TicketOutData>)
+                }
+                onSuccess(r.map { ticketsMapper.mapFrom(it) })
             }
         })
     }
