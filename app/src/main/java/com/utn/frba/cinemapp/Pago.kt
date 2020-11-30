@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.utn.frba.cinemapp.interfaces.CinesApi
@@ -33,7 +34,7 @@ class Pago : AppCompatActivity() {
         //Obtengo los datos que vengo arrastrando con la compra
         val bundle: Bundle? = intent.extras;
         compraTicket = bundle?.getSerializable("compra") as compra
-
+        Log.v("Ticket",compraTicket.toString())
         //Servicio para consumir del backend
         retrofit = Retrofit.Builder()
             .baseUrl("https://utn-2020-2c-desa-mobile.herokuapp.com/")

@@ -25,7 +25,7 @@ class ConfirmacionActivity : AppCompatActivity() {
 
     private var title: TextView? = null
     private var compraTicket: compra? = null
-    private var PagoIntent: Intent = Intent(this, Pago::class.java).apply { }
+    private var PagoIntent: Intent? = null
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -105,6 +105,7 @@ class ConfirmacionActivity : AppCompatActivity() {
     private fun confirmarPago(precioFinal: Precio){
         title!!.text = "El precio final de su compra, con sus descuentos aplicados, es de un total de $" + precioFinal.price.toString() + ". Si quiere consultar los descuentos que se le van a aplicar, seleccione Ver Descuentos"
         compraTicket!!.precio = precioFinal.price
+        PagoIntent = Intent(this, Pago::class.java).apply { }
         PagoIntent!!.putExtra("compra",compraTicket)
     }
 

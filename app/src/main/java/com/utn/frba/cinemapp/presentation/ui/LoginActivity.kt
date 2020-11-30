@@ -3,6 +3,7 @@ package com.utn.frba.cinemapp.presentation.ui
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import com.utn.frba.cinemapp.MainActivity
@@ -86,6 +87,7 @@ class LoginActivity : AppCompatActivity() {
                 }
                 catch (e: Exception){
                     mostrarAlerta("Perdón, pero se produjo con los datos retornados.");
+                    Log.e("ERROR",e.toString())
                 }
             }
 
