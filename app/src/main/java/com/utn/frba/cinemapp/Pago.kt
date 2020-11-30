@@ -35,6 +35,11 @@ class Pago : AppCompatActivity() {
         val bundle: Bundle? = intent.extras;
         compraTicket = bundle?.getSerializable("compra") as compra
         Log.v("Ticket",compraTicket.toString())
+
+        pagoValorAPagar.text = "$" + compraTicket.precio.toString()
+        pagoViewTextName.text = compraTicket.email.toString()
+
+
         //Servicio para consumir del backend
         retrofit = Retrofit.Builder()
             .baseUrl("https://utn-2020-2c-desa-mobile.herokuapp.com/")
