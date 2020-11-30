@@ -11,6 +11,46 @@
     android:background="@drawable/bg"
     android:weightSum="10">
 
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10sp"
+        android:layout_marginTop="2sp"
+        android:layout_weight="1">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/selectSeat_select_date"
+            android:textSize="15sp"
+            android:textStyle="bold">
+        </androidx.appcompat.widget.AppCompatTextView>
+
+<!--        <Spinner-->
+<!--            android:id="@+id/selecSeatDateSpinner"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:layout_gravity="center"-->
+<!--            />-->
+
+        <LinearLayout
+            android:id="@+id/dateLinearLayoutY"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15sp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -20,6 +60,7 @@
             android:layout_weight="1">
 
             <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/TextViewTimeSeat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/selectSeat_select_time"
@@ -27,13 +68,22 @@
                 android:textStyle="bold">
             </androidx.appcompat.widget.AppCompatTextView>
 
-            <Spinner
-                android:id="@+id/selecSeatSpinner"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center"
-                android:entries="@array/spinnerSelectSeat"
-                />
+<!--            <Spinner-->
+<!--                android:id="@+id/selecSeatSpinner"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="match_parent"-->
+<!--                android:layout_gravity="center"-->
+<!--                android:entries="@array/spinnerSelectSeat"-->
+<!--                />-->
+            <LinearLayout
+                android:id="@+id/horaLinearLayoutY"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15sp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+            </LinearLayout>
 
         </LinearLayout>
 

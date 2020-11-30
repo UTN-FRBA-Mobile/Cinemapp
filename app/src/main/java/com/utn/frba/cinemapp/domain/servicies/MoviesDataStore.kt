@@ -1,7 +1,7 @@
 package com.utn.frba.cinemapp.domain.servicies
 
-import com.utn.frba.cinemapp.domain.entities.GenreEntity
-import com.utn.frba.cinemapp.domain.entities.MovieEntity
+import com.utn.frba.cinemapp.domain.entities.movies.GenreEntity
+import com.utn.frba.cinemapp.domain.entities.movies.MovieEntity
 
 interface MoviesDataStore {
 

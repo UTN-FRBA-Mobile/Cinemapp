@@ -1,7 +1,7 @@
 package com.utn.frba.cinemapp.data.api.rest
 
-import com.utn.frba.cinemapp.data.api.entity.MovieDetailsData
-import com.utn.frba.cinemapp.data.api.entity.MovieListResult
+import com.utn.frba.cinemapp.data.api.entity.movies.MovieDetailsData
+import com.utn.frba.cinemapp.data.api.entity.movies.MovieListResult
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path

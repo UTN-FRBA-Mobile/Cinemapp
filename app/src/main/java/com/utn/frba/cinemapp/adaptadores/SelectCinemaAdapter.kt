@@ -15,22 +15,26 @@ import com.utn.frba.cinemapp.models.cine
 import com.utn.frba.cinemapp.models.compra
 import kotlinx.android.synthetic.main.item_select_cinema.view.*
 
-class SelectCinemaAdapter(var cines:List<cine>): RecyclerView.Adapter<SelectCinemaAdapter.SelectCinemaHolder>() {
+class SelectCinemaAdapter(var cines:List<cine>, compras: compra): RecyclerView.Adapter<SelectCinemaAdapter.SelectCinemaHolder>() {
+
+    var comprar: compra = compras
 
     class SelectCinemaHolder(val view: View): RecyclerView.ViewHolder(view){
-        fun render(cine: cine){
+        fun render(cine: cine, compra: compra){
             view.select_cinema_adress.text = cine.adress
             view.select_cinema_name.text = cine.name
             view.select_cinema_description.text = cine.description
 
             //Le agrego el listener para que me envíe a la siguiente pantalla
             view.setOnClickListener(){
-                var compraTicket: compra = compra(cine.identificador)
+                compra.idCine = cine.identificador
+
+                //var compraTicket: compra = compra(cine.identificador)
                 val selectSeat = Intent(it.context, Select_seat_time::class.java).apply {
 //                    var bundle: Bundle = Bundle().putSerializable("compra",compraTicket)
 //                    bundle.putSerializable("compra", compraTicket)
                 }
-                selectSeat.putExtra("compra",compraTicket)
+                selectSeat.putExtra("compra",compra)
                 it.context.startActivity(selectSeat);
 
             }
@@ -47,7 +51,7 @@ class SelectCinemaAdapter(var cines:List<cine>): RecyclerView.Adapter<SelectCine
     }
 
     override fun onBindViewHolder(holder: SelectCinemaHolder, position: Int) {
-        holder.render(cines[position])
+        holder.render(cines[position], comprar)
 
     }
 }
