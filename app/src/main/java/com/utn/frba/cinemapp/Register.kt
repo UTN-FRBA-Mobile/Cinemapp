@@ -61,9 +61,9 @@ class Register : AppCompatActivity() {
                     user = registerEmailAddress.text.toString(),
                     password = registerPassword.text.toString()
                 )
-                val tarjetaDeCredito: List<CreditCard> = listOf( CreditCard(number = "1111-1111-1111-1111", name = "sarasa", expiration = "01/2020") )
+                val tarjetaDeCredito: List<CreditCard> = emptyList()//listOf( CreditCard(number = "1111-1111-1111-1111", name = "sarasa1", expiration = "01/2020") )
 
-                val registracion = register(login = usuarioALoguearse, creditCars = tarjetaDeCredito, identificador = null )
+                val registracion = register(login = usuarioALoguearse, creditCars = tarjetaDeCredito)
 
                 crearUsuario(registracion)
             }
@@ -77,13 +77,13 @@ class Register : AppCompatActivity() {
         val nombreUsuario: String = registracion.login?.user.toString()
 
         val servicioApi = retrofit.create<CinesApi>(CinesApi::class.java)
-        servicioApi.Registrarse(registracion).enqueue(object : Callback<register> {
+        servicioApi.Registrarse(registracion).enqueue(object : Callback<respuestaRegistro> {
 
-            override fun onFailure(call: Call<register>, t: Throwable) {
+            override fun onFailure(call: Call<respuestaRegistro>, t: Throwable) {
                 mostrarAlerta("Perdón, pero se produjo un error al crear el usuario");
             }
 
-            override fun onResponse(call: Call<register>?, response: Response<register>?) {
+            override fun onResponse(call: Call<respuestaRegistro>?, response: Response<respuestaRegistro>?) {
                 try{
                     onResult(response?.body())
                 }
@@ -95,9 +95,9 @@ class Register : AppCompatActivity() {
         })
     }
 
-    private fun onResult(registracion: register?){
+    private fun onResult(registracion: respuestaRegistro?){
         if(registracion != null){
-            if(registracion.identificador.isNullOrEmpty()){
+            if(registracion.idUsuario.isNullOrEmpty()){
                 val builder = AlertDialog.Builder(this)
                     .setTitle("Creación correcta")
                     .setMessage("Vuelva a la pantalla principal y haga el logueo")

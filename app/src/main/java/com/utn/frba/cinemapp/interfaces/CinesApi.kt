@@ -5,7 +5,7 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface CinesApi {
-    //    @GET("api/v1/cinemas/closest/{latitude}&{longitude}")
+    //@GET("api/v1/cinemas/closest/{latitude}&{longitude}")
 //    https://utn-2020-2c-desa-mobile.herokuapp.com/api/v1/cinemas/closest?latitude=-34.604040&longitude=-58.411060
     @GET("api/v1/cinemas/closest/latitude/{latitude}/longitude/{longitude}")
     fun getCinesByProximity(
@@ -28,7 +28,7 @@ interface CinesApi {
     fun Loguearse(@Body usuario: login): Call<login>
 
     @POST("api/v1/users")
-    fun Registrarse(@Body usuario: register): Call<register>
+    fun Registrarse(@Body usuario: register): Call<respuestaRegistro>
 
 //    {{url}}/api/v1/cinemas/7f55a7f0-10a8-48f2-a4fa-49cc48d0589c/dates?movie_id=622855
     @GET("/api/v1/cinemas/{idCine}/dates")
