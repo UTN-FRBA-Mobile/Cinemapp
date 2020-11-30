@@ -1,42 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="150dp"
     xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:gravity="top"
+    android:elevation="10dp"
+    android:background="@drawable/recicle_view_cine"
+    android:layout_marginBottom="5sp">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/select_cinema_image"
+        android:layout_width="130dp"
+        android:layout_height="150dp"
+        android:src="@drawable/entretenimiento"
+        android:layout_marginTop="5sp"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:background="@drawable/button_transparent_without_corner"
-        android:layout_marginBottom="10sp">
+        android:layout_marginBottom="10sp"
+        android:weightSum="10">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/select_cinema_name"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:text="Abasto"
-            android:textSize="30dp"
-            android:layout_margin="5dp"/>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/select_cinema_description"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:text="Cines Multiplex lleva adelante la operación de este complejo que es el único que permanece en la peatonal Lavalle donde supieron funcionar, en las épocas de gloria, más de 28 salas de cine."
-            android:layout_margin="5dp"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/select_cinema_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Abasto"
+                android:textSize="25sp"
+                android:layout_margin="5dp"
+                android:layout_weight="5"/>
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/select_cinema_adress"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:text="Lavalle 780, C1047 AAP, Buenos Aires"
-            android:textSize="20dp"
-            android:layout_margin="5dp"/>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/select_cinema_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Cines Multiplex lleva adelante la operación de este complejo que es el único que permanece en la peatonal Lavalle donde supieron funcionar, en las épocas de gloria, más de 28 salas de cine."
+                android:layout_margin="5sp"
+                android:layout_weight="2"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/select_cinema_adress"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:text="Lavalle 780, C1047 AAP, Buenos Aires"
+                android:textSize="20sp"
+                android:layout_margin="5dp"
+                android:layout_weight="3"/>
+
+
 
     </LinearLayout>
-
 
 
 </LinearLayout>

@@ -34,11 +34,10 @@ class Pago : AppCompatActivity() {
         //Obtengo los datos que vengo arrastrando con la compra
         val bundle: Bundle? = intent.extras;
         compraTicket = bundle?.getSerializable("compra") as compra
-        Log.v("Ticket",compraTicket.toString())
 
+        //Muestro el valor a pagar
         pagoValorAPagar.text = "$" + compraTicket.precio.toString()
         pagoViewTextName.text = compraTicket.email.toString()
-
 
         //Servicio para consumir del backend
         retrofit = Retrofit.Builder()
@@ -48,16 +47,13 @@ class Pago : AppCompatActivity() {
         // creo el servicio para hacer las llamadas
         servicioApi = retrofit.create<CinesApi>(CinesApi::class.java)
 
-        println(compraTicket)
         setup();
         setupButtonAcept()
     }
 
     private fun setup(){
-
         PagoTextNumberCard.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
-
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
@@ -68,16 +64,11 @@ class Pago : AppCompatActivity() {
                     PagoViewTextNumberCard.text = numeroTarjeta
             }
         })
-
-
-
-
     }
 
     private fun setupButtonAcept(){
         PagoSelectButton.setOnClickListener{
             var compraFinal: compraFinal = compraFinal(movie_id = compraTicket.idPelicula!!.toInt(),
-
             cinema_id = compraTicket.idCine.toString(),
             movie_date = compraTicket.dia.toString(),
             movie_time = compraTicket.hora.toString(),
@@ -99,29 +90,20 @@ class Pago : AppCompatActivity() {
                         if(compraRealizada != null){
                             onResultCompra(compraRealizada)
                         }
-
-//                    Log.d("Debug", " Sarasa " + Gson().toJson(asientos))
                     }
                     catch (e: Exception){
-                        //Log.i("sarasa", e.ge())
                     }
                 }
             })
-
-
-
         }
     }
 
     private fun onResultCompra(compraRealizada: respuestaCompra){
-        //mostrarAlerta("compra realizada con éxito",1)
         Toast.makeText(this, "COMPRA REALIZADA CON ÉXITO", Toast.LENGTH_LONG).show();
         var Inicio = Intent(this, MainActivity::class.java).apply { }
         var nuevaCompra = compra(idUsuario = compraTicket.idUsuario.toString(), email = compraTicket.email)
-
         Inicio.putExtra("compra",nuevaCompra)
         startActivity(Inicio);
-
     }
 
     private fun mostrarAlerta( texto: String, tipoError: Int){

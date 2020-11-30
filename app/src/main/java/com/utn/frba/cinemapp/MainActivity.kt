@@ -21,14 +21,11 @@ class MainActivity : AppCompatActivity() {
     var idUsuario: String? = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
         //Si estoy registrado, obtengo el email
         val bundle: Bundle? = intent.extras;
-
         if (bundle != null) {
             compraTicket = bundle.getSerializable("compra") as compra
             mail = compraTicket.email.toString()
@@ -83,7 +80,6 @@ class MainActivity : AppCompatActivity() {
             }else{
                 mostrarAlerta("Necesita estar logueado para usar el QR")
             }
-
         }
 
         optionTickets.setOnClickListener {
