@@ -1,11 +1,10 @@
 # CinemApp
 
-> Aplicación móvil cuyo fin es la de comprar entradas de cine y recibir un código QR como comprobante para entrar al lugar
+> **Aplicación para Android** cuyo fin es la de comprar entradas de cine y recibir un código QR como comprobante para entrar al lugar
 
 ![1](img/cinemap_logo.png)
 
-* ![1](img/android.jpg)
-* ![1](img/kotlin.png)
+<img src="img/kotlin.png" width="20%">
 
 ---
 
