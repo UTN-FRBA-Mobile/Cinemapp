@@ -7,7 +7,7 @@ android:layout_height="match_parent"
 android:orientation="vertical"
 android:weightSum="10"
 tools:context=".Register"
-android:background="@drawable/bg">
+android:background="@color/bg">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
