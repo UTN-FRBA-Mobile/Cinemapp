@@ -30,6 +30,7 @@ class Select_cinema : AppCompatActivity() {
     lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     lateinit var locationRequest: LocationRequest
     lateinit var retrofit: Retrofit
+    lateinit var compraTicket: compra
 
     private var PERMISSION_ID = 100
 
@@ -38,7 +39,7 @@ class Select_cinema : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_select_cinema)
 
-        val compraTicket = intent.getSerializableExtra("compra") as compra
+        compraTicket = intent.getSerializableExtra("compra") as compra
         Log.i("compraTicket", compraTicket.toString())
 
         /***********************************************/
@@ -205,7 +206,7 @@ class Select_cinema : AppCompatActivity() {
 
     fun initRecycleViewSelectCinema(cines: List<cine>) {
         recycleViewSelectCinema.layoutManager = LinearLayoutManager(this)
-        val adapter = SelectCinemaAdapter(cines)
+        val adapter = SelectCinemaAdapter(cines, compraTicket)
         recycleViewSelectCinema.adapter = adapter
     }
 
