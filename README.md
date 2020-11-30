@@ -11,13 +11,8 @@
 
 ## Imágenes de la App
 
-<img src="img/app/menu.jpeg" width="20%">
-<img src="img/app/peliculas.jpeg" width="20%">
-<img src="img/app/detalle.jpeg" width="20%">
-<img src="img/app/cines.jpeg" width="20%">
-<img src="img/app/butacas.jpeg" width="20%">
-<img src="img/app/descuentos.jpeg" width="20%">
-<img src="img/app/tarjeta.jpeg" width="20%">
+<img src="img/app/menu.jpeg" width="20%"> <img src="img/app/peliculas.jpeg" width="20%"> <img src="img/app/detalle.jpeg" width="20%"> <img src="img/app/cines.jpeg" width="20%">
+<img src="img/app/butacas.jpeg" width="20%"> <img src="img/app/descuentos.jpeg" width="20%"> <img src="img/app/tarjeta.jpeg" width="20%">
 
 ---
 
