@@ -109,7 +109,7 @@ class LoginActivity : AppCompatActivity() {
                 compraTicket = bundle.getSerializable("compra") as compra
                 compraTicket.idUsuario = logueado.token.toString()
                 compraTicket.email = nombreUsuario
-                retornoLogin = Intent(this, Pago::class.java).apply {
+                retornoLogin = Intent(this, ConfirmacionActivity::class.java).apply {
                 }
             }
             else{

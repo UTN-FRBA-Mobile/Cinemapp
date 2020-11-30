@@ -29,8 +29,8 @@ class MainActivity : AppCompatActivity() {
 
         if (bundle != null) {
             compraTicket = bundle.getSerializable("compra") as compra
-            mail = compraTicket.email
-            idUsuario = compraTicket.idUsuario
+            mail = compraTicket.email.toString()
+            idUsuario = compraTicket.idUsuario.toString()
 
         } else {
             mail = ""

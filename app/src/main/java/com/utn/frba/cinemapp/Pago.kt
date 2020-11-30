@@ -67,7 +67,7 @@ class Pago : AppCompatActivity() {
 
     private fun setupButtonAcept(){
         PagoSelectButton.setOnClickListener{
-            var compraFinal: compraFinal = compraFinal(movie_id = compraTicket.idPelicula.toInt(),
+            var compraFinal: compraFinal = compraFinal(movie_id = compraTicket.idPelicula!!.toInt(),
             cinema_id = compraTicket.idCine.toString(),
             movie_date = compraTicket.dia.toString(),
             movie_time = compraTicket.hora.toString(),
