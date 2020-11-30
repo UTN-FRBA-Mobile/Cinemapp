@@ -197,18 +197,22 @@ class Select_seat_time : AppCompatActivity() {
         var PagoIntent: Intent
 
         continueSelectSeatButton.setOnClickListener {
+            compraTicket.dia = diaSeleccionado
+            compraTicket.hora = horaSeleccionada
+            compraTicket.listaAsientos = seats
+
             if(compraTicket.idUsuario.isNullOrEmpty()){
-                compraTicketconAsientos = compra(compraTicket.idCine,horaSeleccionada,seats)
+                //compraTicketconAsientos = compra(compraTicket.idCine,horaSeleccionada,seats )
                 PagoIntent = Intent(this, LoginActivity::class.java).apply { }
             }
             else{
                 // TODO agregar el nombre id de usuario
-                compraTicketconAsientos = compra(compraTicket.idCine,horaSeleccionada,seats)
+                //compraTicketconAsientos = compra(compraTicket.idCine,horaSeleccionada,seats)
                 PagoIntent = Intent(this, Pago::class.java).apply { }
             }
 //            val PagoIntent = Intent(this, Pago::class.java).apply {
 //            }
-            PagoIntent.putExtra("compra",compraTicketconAsientos)
+            PagoIntent.putExtra("compra",compraTicket) //compraTicketconAsientos)
             startActivity(PagoIntent);
         }
     }
