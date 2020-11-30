@@ -31,6 +31,7 @@ class Select_cinema : AppCompatActivity() {
     lateinit var locationRequest: LocationRequest
     lateinit var retrofit: Retrofit
     lateinit var compraTicket: compra
+    lateinit var posicion: List<String>
 
     private var PERMISSION_ID = 100
 
@@ -45,18 +46,50 @@ class Select_cinema : AppCompatActivity() {
         /***********************************************/
         //inicializo el fused
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
-        // TODO hacer que devuelva la posición, así se la paso al servicio que trae los cines
-        getUltimaPosicion();
+        posicion = getUltimaPosicion();
 
         retrofit = Retrofit.Builder()
             .baseUrl("https://utn-2020-2c-desa-mobile.herokuapp.com/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()
 
+//        // creo el servicio para hacer las llamadas
+//        val servicioApi = retrofit.create<CinesApi>(CinesApi::class.java)
+//
+////        servicioApi.getCinesByProximity("-34.604040", "-58.411060").enqueue(object :
+//          servicioApi.getCinesByProximity(posicion[0], posicion[1]).enqueue(object :
+//            Callback<List<cine>> {
+//            override fun onFailure(call: Call<List<cine>>, t: Throwable) {
+//                TODO("Not yet implemented")
+//            }
+//
+//            override fun onResponse(call: Call<List<cine>>?, response: Response<List<cine>>?) {
+//
+//                try {
+//                    val cines = response?.body()
+//                    if (!cines.isNullOrEmpty()) {
+//                        initRecycleViewSelectCinema(cines)
+//
+//                    }
+//                    //Log.d("Debug", " Sarasa " + Gson().toJson(cines))
+//
+//                } catch (e: Exception) {
+//                    //Log.i("sarasa", e.ge())
+//                }
+//
+//            }
+//
+//        })
+
+
+    }
+
+    private fun obtenerCines(latitud: String, longitud: String){
         // creo el servicio para hacer las llamadas
         val servicioApi = retrofit.create<CinesApi>(CinesApi::class.java)
 
-        servicioApi.getCinesByProximity("-34.604040", "-58.411060").enqueue(object :
+//        servicioApi.getCinesByProximity("-34.604040", "-58.411060").enqueue(object :
+        servicioApi.getCinesByProximity(latitud, longitud).enqueue(object :
             Callback<List<cine>> {
             override fun onFailure(call: Call<List<cine>>, t: Throwable) {
                 TODO("Not yet implemented")
@@ -80,13 +113,14 @@ class Select_cinema : AppCompatActivity() {
 
         })
 
-
     }
 
     /***
      * Obtenemos la última posición
      */
-    private fun getUltimaPosicion() {
+    private fun getUltimaPosicion() : List<String>{
+        var valorARetornar: List<String> = emptyList()
+
         if (checkPermission()) {
             if (estaLaLocacionhabilitada()) {
                 //obtenemos la ubicación
@@ -100,6 +134,8 @@ class Select_cinema : AppCompatActivity() {
                             "Debug",
                             "la latitud es" + location.latitude + " y la long " + location.longitude
                         )
+                        valorARetornar = listOf(location.latitude.toString(), location.longitude.toString())
+                        obtenerCines(location.latitude.toString(), location.longitude.toString())
                     }
                 }
             } else {
@@ -110,6 +146,7 @@ class Select_cinema : AppCompatActivity() {
         } else {
             pedirPermisos();
         }
+        return valorARetornar
 
     }
 

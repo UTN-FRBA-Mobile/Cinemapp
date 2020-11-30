@@ -51,6 +51,6 @@ interface CinesApi {
     fun comprar(
         @Query("token") idUsuario: String,
         @Body compra: compraFinal
-    ): Call<String>
+    ): Call<respuestaCompra>
 
 }

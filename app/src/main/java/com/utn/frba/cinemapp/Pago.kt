@@ -5,10 +5,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import com.utn.frba.cinemapp.interfaces.CinesApi
 import com.utn.frba.cinemapp.models.compra
 import com.utn.frba.cinemapp.models.compraFinal
+import com.utn.frba.cinemapp.models.respuestaCompra
+import com.utn.frba.cinemapp.presentation.ui.LoginActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_pago.*
 import retrofit2.Call
@@ -68,22 +71,23 @@ class Pago : AppCompatActivity() {
     private fun setupButtonAcept(){
         PagoSelectButton.setOnClickListener{
             var compraFinal: compraFinal = compraFinal(movie_id = compraTicket.idPelicula!!.toInt(),
+
             cinema_id = compraTicket.idCine.toString(),
             movie_date = compraTicket.dia.toString(),
             movie_time = compraTicket.hora.toString(),
             room = 1,
             seats = compraTicket.listaAsientos,
-            discounts = null,
+            discounts = emptyList(),
             credit_card_number = PagoTextNumberCard.text.toString())
 
             servicioApi.comprar(compraTicket.idUsuario.toString(),compraFinal ).enqueue(object :
-                Callback<String> {
+                Callback<respuestaCompra> {
 
-                override fun onFailure(call: Call<String>, t: Throwable) {
-                    mostrarAlerta("Error al hacer la compra")
+                override fun onFailure(call: Call<respuestaCompra>, t: Throwable) {
+                    mostrarAlerta("Error al hacer la compra",0)
                 }
 
-                override fun onResponse(call: Call<String>?, response: Response<String>?) {
+                override fun onResponse(call: Call<respuestaCompra>?, response: Response<respuestaCompra>?) {
                     try{
                         val compraRealizada = response?.body()
                         if(compraRealizada != null){
@@ -103,12 +107,25 @@ class Pago : AppCompatActivity() {
         }
     }
 
-    private fun onResultCompra(compraRealizada: String){
+    private fun onResultCompra(compraRealizada: respuestaCompra){
+        //mostrarAlerta("compra realizada con éxito",1)
+        Toast.makeText(this, "COMPRA REALIZADA CON ÉXITO", Toast.LENGTH_LONG).show();
+        var Inicio = Intent(this, MainActivity::class.java).apply { }
+        var nuevaCompra = compra(idUsuario = compraTicket.idUsuario.toString(), email = compraTicket.email)
+
+        Inicio.putExtra("compra",nuevaCompra)
+        startActivity(Inicio);
 
     }
 
-    private fun mostrarAlerta( texto: String){
+    private fun mostrarAlerta( texto: String, tipoError: Int){
         var builder = AlertDialog.Builder(this);
+        if(tipoError == 1){
+            builder.setTitle("Correcto");
+        }
+        else{
+            builder.setTitle("Error");
+        }
         builder.setTitle("Error");
         builder.setMessage(texto);
         builder.setPositiveButton("Aceptar", null);
