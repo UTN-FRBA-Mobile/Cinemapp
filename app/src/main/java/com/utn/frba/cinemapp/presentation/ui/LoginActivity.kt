@@ -87,12 +87,9 @@ class LoginActivity : AppCompatActivity() {
                 }
                 catch (e: Exception){
                     mostrarAlerta("Perdón, pero se produjo con los datos retornados.");
-                    Log.e("ERROR",e.toString())
                 }
             }
-
         })
-
     }
 
     private fun onResult(logueado: login?, nombreUsuario: String){

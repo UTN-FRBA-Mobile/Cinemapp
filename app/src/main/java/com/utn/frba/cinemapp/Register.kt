@@ -24,8 +24,6 @@ class Register : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
 
-
-
         val loggingInterceptor: HttpLoggingInterceptor = HttpLoggingInterceptor();
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
@@ -33,7 +31,6 @@ class Register : AppCompatActivity() {
             .newBuilder()
             .addInterceptor(loggingInterceptor)
             .build();
-
 
         retrofit = Retrofit.Builder().baseUrl("https://utn-2020-2c-desa-mobile.herokuapp.com/")
             .addConverterFactory(GsonConverterFactory.create())
@@ -91,7 +88,6 @@ class Register : AppCompatActivity() {
                     mostrarAlerta("Perdón, pero se produjo con los datos retornados.");
                 }
             }
-
         })
     }
 
@@ -106,17 +102,14 @@ class Register : AppCompatActivity() {
                     val homeIntent = Intent(this, MainActivity::class.java)
                     startActivity(homeIntent)
                 }
-
             }
             else{
                 mostrarAlerta("Error al crear el usuario");
             }
-
         }
         else{
             mostrarAlerta("Error al crear el usuario");
         }
-
     }
 
     private fun mostrarAlerta( texto: String){
@@ -127,6 +120,5 @@ class Register : AppCompatActivity() {
         var dialog: AlertDialog = builder.create();
         dialog.show();
     }
-
-
+    
 }
