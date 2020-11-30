@@ -30,7 +30,7 @@ class Select_seat_time : AppCompatActivity() {
     lateinit var servicioApi: CinesApi
     lateinit var compraTicket: compra
     lateinit var horario: String
-    var seats: MutableList<String> = mutableListOf()
+    var seats: MutableList<Int> = mutableListOf()
     var diaSeleccionado: String = ""
     var horaSeleccionada: String = ""
 
@@ -271,12 +271,12 @@ class Select_seat_time : AppCompatActivity() {
                     if ( it.getTag() == LIBRE ){
                         it.setBackgroundResource(R.drawable.button_acept)
                         it.setTag(RESERVADO)
-                        seats.add(it.id.toString())
+                        seats.add(it.id.toInt())
                     }
                     else{
                         it.setBackgroundResource(R.drawable.button_transparent)
                         it.setTag(LIBRE)
-                        seats.remove(it.id.toString())
+                        seats.remove(it.id.toInt())
                     }
 
                     println(seats)

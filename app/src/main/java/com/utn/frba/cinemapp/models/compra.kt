@@ -2,7 +2,7 @@ package com.utn.frba.cinemapp.models
 
 import java.io.Serializable
 
-data class compra(var idCine: String? = "",
+data class compra(var idCine: String = "",
                   var horario: String? = "",
                   var listaAsientos: List<Int>? = emptyList(),
                   var numeroTarjeta: String? = "",
@@ -11,5 +11,5 @@ data class compra(var idCine: String? = "",
                   var idPelicula: Int? = 0,
                   var dia: String? = "",
                   var hora: String? = "",
-                  var descuento: String?
+                  var descuento: String? = ""
 ): Serializable
