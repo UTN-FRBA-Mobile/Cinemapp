@@ -1,28 +1,33 @@
 # CinemApp
 
-Aplicacion desarrollada en Kotlin para dispositivos android, su fin es la de comprar entradas de cine y recibir un código QR como comprobante para entrar al cine
+> Aplicacion desarrollada en Kotlin para dispositivos android, su fin es la de comprar entradas de cine y recibir un código QR como comprobante para entrar al cine
 
-![1](img/kotlin.png)
+![1](img/cinemap_logo.png)
 ![1](img/android.jpg)
+![1](img/kotlin.png)
 
 ---
 
 ## Imágenes de la App
 
-![alt text](img/python.png)
-![alt text](img/docker.png)
-![alt text](img/circleci.png)
-![alt text](img/heroku.png)
+<img src="img/app/menu.jpeg" width="20%">
+<img src="img/app/peliculas.jpeg" width="20%">
+<img src="img/app/detalle.jpeg" width="20%">
+<img src="img/app/cines.jpeg" width="20%">
+<img src="img/app/butacas.jpeg" width="20%">
+<img src="img/app/descuentos.jpeg" width="20%">
+<img src="img/app/tarjeta.jpeg" width="20%">
 
 ---
 
 ## Aplicación
 
-Está probada Android 10, sus requerimientos son los siguientes:
+Los requerimientos para levantar el proyecto son los siguientes:
 
 * **kotlin**: 1.3.72
 * **Sdk**: 30
 * **minSdk**: 23
+* **Android**: 10 o superior
 
 ## Back-end
 
