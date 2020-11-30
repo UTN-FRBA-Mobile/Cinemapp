@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="horizontal"
     android:gravity="top"
-
+    android:elevation="10dp"
     android:background="@drawable/recicle_view_cine"
     android:layout_marginBottom="5sp">
 

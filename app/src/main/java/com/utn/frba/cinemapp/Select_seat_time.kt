@@ -6,6 +6,7 @@ import android.util.Log
 import android.util.TypedValue
 import android.view.Gravity
 import android.view.View
+import android.view.ViewGroup
 import android.widget.*
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -44,7 +45,6 @@ class Select_seat_time : AppCompatActivity() {
         //Obtengo los datos que vengo arrastrando con la compra
         val bundle: Bundle? = intent.extras;
         compraTicket = bundle?.getSerializable("compra") as compra
-//        Toast.makeText(this, "la compra es: ${compraTicket.idCine}", Toast.LENGTH_LONG).show()
 
         //Servicio para consumir del backend
         retrofit = Retrofit.Builder()
@@ -56,14 +56,6 @@ class Select_seat_time : AppCompatActivity() {
 
         //cargo los días que tiene ese cine
         setupDaysCinema()
-
-
-        //configuro los eventlistener de los objetos de la pantalla
-        //setupElements()
-
-        // Obtengo del backend la estructura del cine seleccionado
-        // Ahora armo el layout
-        //setScreen();
     }
 
     private fun setupDaysCinema(){
@@ -79,7 +71,6 @@ class Select_seat_time : AppCompatActivity() {
                     if(fecha != null){
                         onResultFecha(fecha)
                     }
-
 //                    Log.d("Debug", " Sarasa " + Gson().toJson(asientos))
                 }
                 catch (e: Exception){
@@ -94,10 +85,11 @@ class Select_seat_time : AppCompatActivity() {
 
         for(fecha in fechas){
             var fechaNueva: TextView = TextView(this)
-//            var layoutParametros: LinearLayout.LayoutParams = LinearLayout.LayoutParams(50,50)
-//            layoutParametros.setMargins(30, 30, 30, 30)
-//            fechaNueva.setLayoutParams(layoutParametros)
-            fechaNueva.setBackgroundResource(R.drawable.button_transparent)
+            var layoutParametros: LinearLayout.LayoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT)
+            layoutParametros.setMargins(1, 1, 1, 1)
+            fechaNueva.setPadding(1,1,1,1)
+            fechaNueva.setLayoutParams(layoutParametros)
+            fechaNueva.setBackgroundResource(R.drawable.recicle_view_cine)
             fechaNueva.setText(fecha.toString())
             fechaNueva.setTag(fecha.toString())
             fechaNueva.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
@@ -156,7 +148,13 @@ class Select_seat_time : AppCompatActivity() {
 
         for (hora in horas) {
             var horaNueva: TextView = TextView(this)
-            horaNueva.setBackgroundResource(R.drawable.button_transparent)
+
+            var layoutParametros: LinearLayout.LayoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT)
+            layoutParametros.setMargins(1, 1, 1, 1)
+            horaNueva.setPadding(1,1,1,1)
+            horaNueva.setLayoutParams(layoutParametros)
+            horaNueva.setBackgroundResource(R.drawable.recicle_view_cine)
+//            horaNueva.setBackgroundResource(R.drawable.button_transparent)
             horaNueva.setText(hora.toString())
             horaNueva.setTag(hora.toString())
             horaNueva.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
