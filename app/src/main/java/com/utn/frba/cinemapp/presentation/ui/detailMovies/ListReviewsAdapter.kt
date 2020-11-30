@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.RecyclerView
 import com.utn.frba.cinemapp.R
-import com.utn.frba.cinemapp.domain.entities.ReviewEntity
+import com.utn.frba.cinemapp.domain.entities.movies.ReviewEntity
 import kotlinx.android.synthetic.main.activity_movie_detail_body_item_review.view.*
 
 class ListReviewsAdapter(
