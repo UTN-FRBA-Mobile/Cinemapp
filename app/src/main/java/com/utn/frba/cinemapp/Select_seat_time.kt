@@ -28,6 +28,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class Select_seat_time : AppCompatActivity() {
     val RESERVADO: Int = 1
     val LIBRE: Int = 0
+    val OCUPADO: Int = 2
     lateinit var retrofit: Retrofit
     lateinit var servicioApi: CinesApi
     lateinit var compraTicket: compra
@@ -74,7 +75,6 @@ class Select_seat_time : AppCompatActivity() {
 //                    Log.d("Debug", " Sarasa " + Gson().toJson(asientos))
                 }
                 catch (e: Exception){
-                    //Log.i("sarasa", e.ge())
                 }
             }
         })
@@ -97,25 +97,10 @@ class Select_seat_time : AppCompatActivity() {
             fechaNueva.setOnClickListener{
                 diaSeleccionado = it.getTag().toString()
                 cargaHora(it.getTag().toString())
-//                if ( it.getTag() == LIBRE ){
-//                    it.setBackgroundResource(R.drawable.button_acept)
-//                    it.setTag(RESERVADO)
-//                    cargaHora(it.)
-//                }
-//                else{
-//                    it.setBackgroundResource(R.drawable.button_transparent)
-//                    it.setTag(LIBRE)
-//                    seats.remove(it.id.toString())
-//                }
-//
-//                println(seats)
-
             }
 
             dateLinearLayoutY.addView(fechaNueva)
         }
-//        selecSeatDateSpinner.adapter(ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,fechas) )
-//        new ArrayAdapter<String>(getApplicationContext(), android.R.layout.simple_spinner_dropdown_item,lenguajes
     }
 
     private fun cargaHora(diaElegido: String){
@@ -131,16 +116,11 @@ class Select_seat_time : AppCompatActivity() {
                     if(hora != null){
                         onResultHora(hora)
                     }
-
-//                    Log.d("Debug", " Sarasa " + Gson().toJson(asientos))
                 }
                 catch (e: Exception){
-                    //Log.i("sarasa", e.ge())
                 }
             }
         })
-
-
     }
 
     private fun onResultHora(horas: List<String>) {
@@ -148,13 +128,11 @@ class Select_seat_time : AppCompatActivity() {
 
         for (hora in horas) {
             var horaNueva: TextView = TextView(this)
-
             var layoutParametros: LinearLayout.LayoutParams = LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT,LinearLayout.LayoutParams.WRAP_CONTENT)
             layoutParametros.setMargins(1, 1, 1, 1)
             horaNueva.setPadding(1,1,1,1)
             horaNueva.setLayoutParams(layoutParametros)
             horaNueva.setBackgroundResource(R.drawable.recicle_view_cine)
-//            horaNueva.setBackgroundResource(R.drawable.button_transparent)
             horaNueva.setText(hora.toString())
             horaNueva.setTag(hora.toString())
             horaNueva.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20F)
@@ -163,33 +141,28 @@ class Select_seat_time : AppCompatActivity() {
                 horaSeleccionada = it.getTag().toString()
                 cargaSalas(it.getTag().toString())
             }
-
             horaLinearLayoutY.addView(horaNueva)
-
         }
     }
 
     private fun cargaSalas(horaElegido: String){
-    servicioApi.getSeatFromTime(compraTicket.idCine,compraTicket.idPelicula.toString(),diaSeleccionado,horaSeleccionada,"1") .enqueue(object : Callback<List<String>> {
+        servicioApi.getSeatFromTime(compraTicket.idCine,compraTicket.idPelicula.toString(),diaSeleccionado,horaSeleccionada,"1") .enqueue(object : Callback<List<String>> {
 
-        override fun onFailure(call: Call<List<String>>, t: Throwable) {
-            mostrarAlerta("Error al obtener las butacas")
-        }
-
-        override fun onResponse(call: Call<List<String>>?, response: Response<List<String>>?) {
-            try{
-                val asientos = response?.body()
-                setScreen(asientos)
-                seats.clear()
-                Log.d("Debug", " Sarasa " + Gson().toJson(asientos))
+            override fun onFailure(call: Call<List<String>>, t: Throwable) {
+                mostrarAlerta("Error al obtener las butacas")
             }
-            catch (e: Exception){
-                //Log.i("sarasa", e.ge())
-            }
-        }
-    })
 
-}
+            override fun onResponse(call: Call<List<String>>?, response: Response<List<String>>?) {
+                try{
+                    val asientos = response?.body()
+                    setScreen(asientos)
+                    seats.clear()
+                }
+                catch (e: Exception){
+                }
+            }
+        })
+    }
 
     private fun configurarBotones(){
         var compraTicketconAsientos: compra
@@ -206,26 +179,18 @@ class Select_seat_time : AppCompatActivity() {
                 compraTicket.listaAsientos = seats
 
                 if(compraTicket.idUsuario.isNullOrEmpty()){
-                    //compraTicketconAsientos = compra(compraTicket.idCine,horaSeleccionada,seats )
                     PagoIntent = Intent(this, LoginActivity::class.java).apply { }
                 }
                 else{
-                    // TODO agregar el nombre id de usuario
-                    //compraTicketconAsientos = compra(compraTicket.idCine,horaSeleccionada,seats)
                     PagoIntent = Intent(this, ConfirmacionActivity::class.java).apply { }
                 }
-//            val PagoIntent = Intent(this, Pago::class.java).apply {
-//            }
-                PagoIntent.putExtra("compra",compraTicket) //compraTicketconAsientos)
+
+                PagoIntent.putExtra("compra",compraTicket)
                 startActivity(PagoIntent);
-
-
             }
-
         }
     }
 
-    // TODO: debería recibir un objeto con el estado y la estructura del cine
 //    private fun setScreen(asientos: List<seat>?){
     private fun setScreen(asientos: List<String>?){
         var contador: Int = 1
@@ -302,38 +267,6 @@ class Select_seat_time : AppCompatActivity() {
             seatLinearLayoutY.addView(lienarNuevo)
         }
 
-    }
-
-    private fun setupElements(){
-        //Configura spinner con horarios
-
-//        selecSeatSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-//            override fun onNothingSelected(parent: AdapterView<*>?) {
-//            }
-//
-//            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-//                horario = parent?.getItemAtPosition(position).toString()
-//                servicioApi.getSeatFromTime(compraTicket.idCine, parent?.getItemAtPosition(position).toString()).enqueue(object : Callback<List<seat>> {
-//
-//                    override fun onFailure(call: Call<List<seat>>, t: Throwable) {
-//                        TODO("Not yet implemented")
-//                    }
-//
-//                    override fun onResponse(call: Call<List<seat>>?, response: Response<List<seat>>?) {
-//                        try{
-//                            val asientos = response?.body()
-//                            setScreen(asientos)
-//                            seats.clear()
-//                            Log.d("Debug", " Sarasa " + Gson().toJson(asientos))
-//                        }
-//                        catch (e: Exception){
-//                            //Log.i("sarasa", e.ge())
-//                        }
-//                    }
-//                })
-//
-//            }
-//        }
     }
 
     private fun mostrarAlerta( texto: String){
