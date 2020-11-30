@@ -197,17 +197,13 @@ class Select_seat_time : AppCompatActivity() {
         val filas: Int
         val columnas: Int
 
-
+        // Limpio el objeto con las butacas, así completo con las nuevas
         seatLinearLayoutY.removeAllViewsInLayout()
 
-//        if(!asientos.isNullOrEmpty()){
-//            filas = (asientos.size / 2).toInt() - 10 //19 //3
-//            columnas = (asientos.size / 2).toInt()  -10 // 19//3
-//        }
-//        else{
-            filas = 3
-            columnas = 3
-//        }
+        // TODO: Esta estructura debería vernir del back-end. Para la prueba de concepto se hardcodea a 3 filas y 3 columnas
+        //Configuro la estructura del cine en cuestión
+        filas = 3
+        columnas = 3
 
         for (i in 1..filas) {
             var lienarNuevo: LinearLayout = LinearLayout(this)
@@ -215,32 +211,23 @@ class Select_seat_time : AppCompatActivity() {
 
             for(j in 1.. columnas){
                 var butacaNueva: TextView = TextView(this)
+
                 //Para pasarle los parámetros de layout al textview, necesito hacerlo a través de un objeto layoutParam
                 var layoutParametros: LinearLayout.LayoutParams = LinearLayout.LayoutParams(50,50)
                 layoutParametros.setMargins(30, 30, 30, 30)
                 butacaNueva.setLayoutParams(layoutParametros)
 
-                // TODO: si está ocupado que ponga un fondo, sino que ponga el otro
-                //butacaNueva.setBackgroundResource(R.drawable.button_acept)
-
-//                butacaNueva.set(asientos?.get(contador)?.name);
-//                if(asientos?.get(contador)?.status!!){
-
                 if(asientos != null){
-
                     // if( asientos!![contador].status){
                     if( asientos.contains(contador.toString()) ){
                         butacaNueva.setBackgroundResource(R.drawable.button_transparent)
                         butacaNueva.setTag(LIBRE)
                     }
                     else{
-                        butacaNueva.setBackgroundResource(R.drawable.button_acept)
-                        butacaNueva.setTag(RESERVADO)
-                        //butacaNueva.setTag(LIBRE, asientos.get(contador))
+                        butacaNueva.setBackgroundResource(R.drawable.button_ocupado)
+                        butacaNueva.setTag(OCUPADO)
                     }
-
                 }
-
 
                 butacaNueva.id = contador
 
@@ -250,23 +237,21 @@ class Select_seat_time : AppCompatActivity() {
                         it.setTag(RESERVADO)
                         seats.add(it.id.toInt())
                     }
+                    else if(it.getTag() == OCUPADO){
+                        mostrarAlerta("Esa butaca no se encuentra disponible")
+                    }
                     else{
                         it.setBackgroundResource(R.drawable.button_transparent)
                         it.setTag(LIBRE)
                         seats.remove(it.id.toInt())
                     }
-
-                    println(seats)
-
+//                    println(seats)
                 }
-
                 lienarNuevo.addView(butacaNueva)
                 contador++;
-
             }
             seatLinearLayoutY.addView(lienarNuevo)
         }
-
     }
 
     private fun mostrarAlerta( texto: String){
