@@ -11,5 +11,5 @@ data class compra(var idCine: String = "",
                   var idPelicula: Int = 0,
                   var dia: String? = "",
                   var hora: String? = "",
-                  var descuento: String? = ""
+                  var precio: Int? = 0
 ): Serializable

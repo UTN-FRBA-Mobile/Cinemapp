@@ -48,8 +48,7 @@
     <string name="pelicula_detalle_boton_comprar_entradas">Comprar Entradas</string>
     <string name="app_portada_descuentos">Ver descuentos</string>
     <string name="selectSeat_select_date">Seleccione el día</string>
-
-
+    <string name="pagar">Pagar</string>
 
 
 </resources>
